@@ -9,9 +9,7 @@
     "type": "git",
     "url": "https://gitlab.digital.homeoffice.gov.uk/john-paul.harold/dependency-mirror"
   },
-  "scripts": {
-
-  },
+  "scripts": {},
   "babel": {
     "presets": [
       "es2015",
@@ -84,6 +82,7 @@
     "redux-freeze": "^0.1.5",
     "sass-lint": "^1.10.2",
     "sass-loader": "^4.1.1",
+    "sinon": "^3.3.0",
     "style-loader": "^0.13.2",
     "tape": "^4.6.3",
     "tape-jsx-equals": "^1.0.0",
