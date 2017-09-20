@@ -74,3 +74,5 @@ src/.sonarlint/
 nleds.config.json
 
 /src/public/main.*.*
+
+previous.package-lock.json
