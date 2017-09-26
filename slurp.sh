@@ -1,9 +1,12 @@
 #!/bin/sh
 
-FILE=$1
+# the text file, argument 1
+NPM_MODULE_LIST=$1
 
-echo "$FILE"
-while read Name
+# loop through each line
+while read npmModulePath
 do
-  curl -O $Name
-done < $FILE
+  # output the file
+  # -O flag tells curl to output as the filename
+  curl -O $npmModulePath
+done < $NPM_MODULE_LIST
