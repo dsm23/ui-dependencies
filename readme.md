@@ -6,12 +6,13 @@ This repo only exists to mirror the current dependencies used in the real app. W
 
 Your basic flow should be:
 
+- we assume you've checked this out already and `npm i`. The will get you to parity with the `SEC_ENV` repo.
 - navigate to this repo in `GIT BASH` (`Powershell` seems to mangle `git` output)
 - `git pull` so you have the latest snapshot
 - make a note of your current git hash. You can do `git rev-parse HEAD`. Copy paste, write it down somewhere, however you see fit
 - install the modules you want, as many as you want
 - `git commit` and `git push`
-- now run the `nodeJS` script with `node getDepsDelta.js --fromCommit=<that commit has you made a note of earlier, minus these angled brackets>`
+- now run the `nodeJS` script with `node getDepsDelta.js --fromCommit=<that commit hash has you made a note of earlier, minus these angled brackets>`
 - you will have a new file appear in the repo (it's ignored), which has the following pattern: `<timestamp minus these angled brackets>.new-dependencies.txt`
 - send this list along to the platform team however you see fit
 - you will also need to send the tarballs of the `npm` modules. The `slurp.sh` shell script will parse your above `*.new-dependencies.txt` file and download the files. The only arg is your text file: `slurp.sh your.txt`
