@@ -11,12 +11,13 @@ eslint-disable
 var fs = require('fs');
 var exec = require('child_process').exec;
 
-var allowedFlags = ['fromCommit']; // optional
+var allowedFlags = ['fromCommit', 'toCommit']; // optional
 var _args = process.argv.slice(2);
 var args = {};
 var lockFile;
 var prevLockFile;
 var fromCommit = 'HEAD~1';
+var toCommit = 'HEAD';
 
 // command line flag processing
 if (_args.length > 0) {
@@ -34,11 +35,15 @@ if (_args.length > 0) {
 
 function loadLockFiles() {
   // Load the JSON files
-  fs.readFile('package-lock.json', 'utf8', function(err, data) {
+  fs.readFile('current.package-lock.json', 'utf8', function(err, data) {
     if (err) {
       throw err;
     }
-    lockFile = JSON.parse(data);
+    try {
+      lockFile = JSON.parse(data);
+    } catch(e) {
+      lockFile = { dependencies: [] };
+    }
     if (prevLockFile) {
       compareLocks(prevLockFile, lockFile);
     }
@@ -46,7 +51,11 @@ function loadLockFiles() {
 
   fs.readFile('previous.package-lock.json', 'utf8', function(err, data) {
     if (err) throw err;
-    prevLockFile = JSON.parse(data);
+    try {
+      prevLockFile = JSON.parse(data);
+    } catch(e) {
+      prevLockFile = { dependencies: [] };
+    }
     if (lockFile) {
       compareLocks(prevLockFile, lockFile);
     }
@@ -54,9 +63,24 @@ function loadLockFiles() {
 }
 
 // eslint-disable-next-line no-unused-vars
-function getLock(error, stdout, stderr) {
+function getCurrentLock(error, stdout, stderr) {
   if (error) {
-    throw new Error('error getting previous lockFile from git');
+    // ignoring this error allows us to compare against no file, and get a complete list
+    console.log(`Error fetching package-lock.json file for commit ${fromCommit}`);
+    // throw new Error('error getting previous lockFile from git');
+  }
+
+  exec(
+    // eslint-disable-next-line max-len
+    'git show ' + toCommit + ':./package-lock.json > ./current.package-lock.json',
+    gotCurrentLock
+  );
+}
+
+// eslint-disable-next-line no-unused-vars
+function gotCurrentLock(error, stdout, stderr) {
+  if (error) {
+    throw new Error('error getting current lockFile from git');
   }
 
   loadLockFiles();
@@ -67,11 +91,14 @@ function getLock(error, stdout, stderr) {
 if (args.hasOwnProperty('fromCommit')) {
   fromCommit = args.fromCommit;
 }
+if (args.hasOwnProperty('toCommit')) {
+  toCommit = args.toCommit;
+}
 
 exec(
   // eslint-disable-next-line max-len
   'git show ' + fromCommit + ':./package-lock.json > ./previous.package-lock.json',
-  getLock
+  getCurrentLock
 );
 
 function flattenDependencies(dependencyMap, dependencies) {
@@ -131,6 +158,7 @@ function deleteFile(path) {
 function outputDependencies(array) {
   var logger;
   var fileName = new Date().getTime() + '.new-dependencies.txt';
+  // var fileName = `${fromCommit}-${toCommit}.new-dependencies.txt`;
 
   logger = fs.createWriteStream(fileName, {
     flags: 'a', // 'a' means appending (old data will be preserved)
@@ -142,4 +170,5 @@ function outputDependencies(array) {
 
   // all done, let's clean up
   deleteFile('previous.package-lock.json');
+  deleteFile('current.package-lock.json');
 }
