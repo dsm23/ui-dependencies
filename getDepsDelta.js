@@ -6,13 +6,14 @@ eslint-disable
   dot-notation,
   prefer-destructuring
 */
+"use strict";
 
 var fs = require('fs');
 var exec = require('child_process').exec;
 
-var allowedFlags = ['fromCommit']; // unused
-var _args = process.argv.slice(2); // unused
-var args = {}; // unused
+var allowedFlags = ['fromCommit']; // optional
+var _args = process.argv.slice(2);
+var args = {};
 var lockFile;
 var prevLockFile;
 var fromCommit = 'HEAD~1';
@@ -73,17 +74,35 @@ exec(
   getLock
 );
 
-function compareLocks() {
-  var deps = lockFile.dependencies;
-  var prevDeps = prevLockFile.dependencies;
-  var newDependencies = [];
-  var depKey;
+function flattenDependencies(dependencyMap, dependencies) {
+  return Object.keys(dependencies).reduce(
+    (dependencyMap, key) => {
+      const dependency = dependencies[key];
 
-  for (depKey in deps) {
-    if (!prevDeps.hasOwnProperty(depKey) ||
-          (prevDeps.hasOwnProperty(depKey) &&
-          prevDeps[depKey].version !== deps[depKey].version) ) {
-      newDependencies.push(deps[depKey].resolved);
+      if (dependency.resolved) {
+        const mapKey = `${key}@${dependency.version}`;
+
+        dependencyMap[mapKey] = dependencyMap[mapKey] || dependency.resolved;
+
+        if (dependency.dependencies) {
+          dependencyMap = flattenDependencies(dependencyMap, dependency.dependencies);
+        }
+      }
+
+      return dependencyMap;
+    },
+    dependencyMap
+  );
+}
+
+function compareLocks() {
+  const deps = flattenDependencies({}, lockFile.dependencies);
+  const prevDeps = flattenDependencies({}, prevLockFile.dependencies);
+  const newDependencies = [];
+
+  for (let depKey in deps) {
+    if (!prevDeps.hasOwnProperty(depKey)) {
+      newDependencies.push(deps[depKey]);
     }
   }
 
