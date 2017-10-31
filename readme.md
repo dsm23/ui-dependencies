@@ -2,6 +2,10 @@
 
 This repo only exists to mirror the current dependencies used in the real app. We do this because we want to install npm modules and keep a track of all the dependencies, updates to existing modules that happens with `npm i <some module>`.
 
+For details on running the snyk test please see: https://ibm.ent.box.com/file/241199751146
+run `snyk test --dev --json | snyk-to-html -o <current folder>/reports/results<todays date>.html
+`
+
 ## Basic usage
 
 Your basic flow should be:
