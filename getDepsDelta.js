@@ -122,7 +122,7 @@ function flattenDependencies(dependencyMap, dependencies) {
   );
 }
 
-function compareLocks() {
+function compareLocks(prevLockFile, lockFile) {
   const deps = flattenDependencies({}, lockFile.dependencies);
   const prevDeps = flattenDependencies({}, prevLockFile.dependencies);
   const newDependencies = [];
