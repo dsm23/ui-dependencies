@@ -7,6 +7,7 @@ A list of requirements for the UI dependencies tool, to aid any further refactor
 - process the generated list and produce a Snyk report.
 - when a requested list has been accepted, ensure there is a mechanism to ensure this tool reflects the approved dependencies.
 - must support dependency tree having multiple versions of the same package
+- generate md5 of import zip and snyk report
 
 
 # Nice to have
