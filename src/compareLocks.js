@@ -1,5 +1,4 @@
 const flattenDependencies = require('./flattenDependencies');
-const outputDependencies = require('./outputDependencies');
 
 function compareLocks(prevLockFile, lockFile) {
   const deps = flattenDependencies({}, lockFile.dependencies);
@@ -12,7 +11,7 @@ function compareLocks(prevLockFile, lockFile) {
     }
   }
 
-  outputDependencies(newDependencies);
+  return newDependencies;
 }
 
 module.exports = compareLocks;

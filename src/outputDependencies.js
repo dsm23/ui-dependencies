@@ -1,5 +1,4 @@
 const fs = require('fs');
-const deleteFile = require('./deleteFile');
 
 function outputDependencies(array) {
   var logger;
@@ -13,10 +12,6 @@ function outputDependencies(array) {
   array.forEach(function(dep) {
     logger.write(dep + '\n');
   });
-
-  // all done, let's clean up
-  deleteFile('previous.package-lock.json');
-  deleteFile('current.package-lock.json');
 }
 
 module.exports = outputDependencies;

@@ -1,10 +1,9 @@
 var fs = require('fs');
-var compareLocks = require('./compareLocks');
 
 var lockFile;
 var prevLockFile;
 
-function loadLockFiles() {
+function loadLockFiles(callback) {
   // Load the JSON files
   fs.readFile('current.package-lock.json', 'utf8', function(err, data) {
     if (err) {
@@ -16,7 +15,7 @@ function loadLockFiles() {
       lockFile = { dependencies: [] };
     }
     if (prevLockFile) {
-      compareLocks(prevLockFile, lockFile);
+      callback(prevLockFile, lockFile);
     }
   });
 
@@ -28,7 +27,7 @@ function loadLockFiles() {
       prevLockFile = { dependencies: [] };
     }
     if (lockFile) {
-      compareLocks(prevLockFile, lockFile);
+      callback(prevLockFile, lockFile);
     }
   });
 }
