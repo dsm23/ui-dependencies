@@ -6,10 +6,16 @@
   "directories": {
     "doc": "docs"
   },
+  "scripts": {
+    "init": "node ./src/scripts/init.js"
+  },
   "engines": {
     "node": ">=8.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "commander": "^2.12.2",
+    "jsonfile": "^4.0.0"
+  },
   "devDependencies": {
     "eslint": "^4.13.0",
     "eslint-plugin-node": "^5.2.1"
