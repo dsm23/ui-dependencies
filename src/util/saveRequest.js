@@ -1,5 +1,7 @@
+const jsonfile = require('jsonfile');
+
 function saveRequest(json) {
-  console.log(json);
+  jsonfile.writeFileSync('./requested.json', json, {spaces: 2});
 }
 
 module.exports = saveRequest;
