@@ -20,6 +20,7 @@ const createPackageForTest = require('../util/createPackageForTest');
 const slurp = require('../util/slurp');
 const npmInstall = require('../util/npmInstall');
 const snykTest = require('../util/snykTest');
+const filterSnyk = require('../util/filterSnyk');
 const snykToHtml = require('../util/snykToHtml');
 
 program
@@ -38,8 +39,9 @@ const requested = getRequested(dependencies, approved);
 createPackageForTest(lock, package, requestFolder);
 saveRequest(requested, requestFolder);
 npmInstall(requestFolder);
-snykTest(requestFolder, 'results.json');
-snykToHtml(requestFolder, 'results.json');
+const snykReport = snykTest(requestFolder, 'results.json');
+const filteredSnyk = filterSnyk(snykReport, requested);
+snykToHtml(requestFolder, 'results.json', filteredSnyk);
 
 console.log(`Saving tarballs to: ${requestFolder}...`);
 
