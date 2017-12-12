@@ -1,7 +1,5 @@
 // Creates an approved list from a package lock
 // Should only need to run this once, when setting up from an already approved lock file
-//
-
 
 // 1. read package lock file from cli
 // 2. flatten lock file
@@ -23,7 +21,7 @@ program
 const relPathToLock = program.args[0];
 
 const fileContents = loadLockFiles(relPathToLock);
-const flattened = flattenDependencies({}, fileContents.dependencies);
+const flattened = flattenDependencies({}, fileContents);
 
 const approved = loadApproved();
 const updatedApproved = Object.assign({}, approved, flattened);

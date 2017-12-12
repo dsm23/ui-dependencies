@@ -1,4 +1,5 @@
-function flattenDependencies(dependencyMap, dependencies) {
+function flattenDependencies(dependencyMap, packageLock) {
+  const dependencies = packageLock.dependencies;
   return Object.keys(dependencies).reduce(
     (dependencyMap, key) => {
       const dependency = dependencies[key];

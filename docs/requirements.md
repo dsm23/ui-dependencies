@@ -19,4 +19,24 @@ A list of requirements for the UI dependencies tool, to aid any further refactor
 
 # Plan
 
-Follow npm format e.g. https://registry.npmjs.org/ansi-styles
+NPM Scripts:
+
+## init <package-lock>
+
+Loads the contents of a package-lock.json file and marks all of its dependencies and sub dependencies as approved. Used for initialisation.
+
+## request <package-lock>
+
+Build a bundle for requesting the dependencies and sub dependencies of a package-lock that are not already marked as approved.
+
+## approve <module-list>
+
+Load the contents of a json file following the structure:
+
+```
+{
+  "module-name@version": "tarball-url"
+}
+```
+
+...and mark them all as approved.

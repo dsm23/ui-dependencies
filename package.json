@@ -7,7 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "init": "node ./src/scripts/init.js"
+    "init": "node ./src/scripts/init.js",
+    "request": "node ./src/scripts/request.js",
+    "approve": "node ./src/scripts/approve.js"
   },
   "engines": {
     "node": ">=8.0.0"
