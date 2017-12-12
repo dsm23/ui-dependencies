@@ -7,8 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "init": "node ./src/scripts/init.js",
-    "request": "node ./src/scripts/request.js",
+    "init": "node ./src/scripts/init.js ./merged",
+    "request": "node ./src/scripts/request.js ./merged",
     "approve": "node ./src/scripts/approve.js"
   },
   "engines": {
