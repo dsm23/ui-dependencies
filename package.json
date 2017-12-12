@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "commander": "^2.12.2",
+    "download": "^6.2.5",
     "jsonfile": "^4.0.0"
   },
   "devDependencies": {
