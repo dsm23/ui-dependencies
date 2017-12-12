@@ -10,7 +10,7 @@ function flattenDependencies(dependencyMap, packageLock) {
         dependencyMap[mapKey] = dependencyMap[mapKey] || dependency.resolved;
 
         if (dependency.dependencies) {
-          dependencyMap = flattenDependencies(dependencyMap, dependency.dependencies);
+          dependencyMap = flattenDependencies(dependencyMap, dependency);
         }
       }
 
