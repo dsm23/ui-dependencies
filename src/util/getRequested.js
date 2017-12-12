@@ -1,6 +1,6 @@
 // takes a flattened lock and removes dependencies that are already approved
 function getRequested(dependencies, approved) {
-  return dependencies.reduce((acc, request) => {
+  return Object.keys(dependencies).reduce((acc, request) => {
       if(approved[request] === dependencies[request]) {
         // package is approved and tarball url matches, no need to request
         return acc;

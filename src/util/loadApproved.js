@@ -1,5 +1,7 @@
+const jsonfile = require('jsonfile');
+
 function loadApproved() {
-  return {};
+  return jsonfile.readFileSync('./approved.json', 'utf8');
 }
 
 module.exports = loadApproved
