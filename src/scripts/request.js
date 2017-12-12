@@ -6,11 +6,11 @@
 // - build a package.json that can be used by snyk
 // - generate a snyk report
 // - remove any warnings from snyk report
-//
 var program = require('commander');
 var path = require('path');
 
-const loadLockFiles = require('../util/loadLockFiles');
+const loadLockFile = require('../util/loadLockFile');
+const loadPackage = require('../util/loadPackage');
 const flattenDependencies = require('../util/flattenDependencies');
 const loadApproved = require('../util/loadApproved');
 const saveRequest = require('../util/saveRequest');
@@ -23,14 +23,19 @@ program
   .version('0.1.0')
   .parse(process.argv);
 
-const relPathToLock = program.args[0];
+const relPathToPackage = program.args[0];
 
 const requestFolder = createRequestFolder();
-const lock = loadLockFiles(relPathToLock);
+const lock = loadLockFile(relPathToPackage);
+const package = loadPackage(relPathToPackage);
 const dependencies = flattenDependencies({}, lock);
 const approved = loadApproved();
 const requested = getRequested(dependencies, approved);
-createPackageForTest(requested, requestFolder);
+createPackageForTest(lock, package, requestFolder);
+// npm install
+// snyk test
+// snyk filter
+// snyk html
 
 saveRequest(requested, requestFolder);
 console.log(`Saving to: ${requestFolder}...`);
