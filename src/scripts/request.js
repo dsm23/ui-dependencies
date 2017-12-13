@@ -39,9 +39,10 @@ const requested = getRequested(dependencies, approved);
 createPackageForTest(lock, package, requestFolder);
 saveRequest(requested, requestFolder);
 npmInstall(requestFolder);
-const snykReport = snykTest(requestFolder, 'results.json');
+const snykReport = snykTest(requestFolder);
+snykToHtml(requestFolder, 'complete-results', snykReport);
 const filteredSnyk = filterSnyk(snykReport, requested);
-snykToHtml(requestFolder, 'results.json', filteredSnyk);
+snykToHtml(requestFolder, 'filtered-results', filteredSnyk);
 
 console.log(`Saving tarballs to: ${requestFolder}...`);
 
