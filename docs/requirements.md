@@ -6,15 +6,10 @@ A list of requirements for the UI dependencies tool, to aid any further refactor
 - generate a list of these missing packages in specific json (for Snyk) and txt (for submission) formats.
 - process the generated list and produce a Snyk report.
 - when a requested list has been accepted, ensure there is a mechanism to ensure this tool reflects the approved dependencies.
-- must support dependency tree having multiple versions of the same package
-- generate md5 of import zip and snyk report
-
-
-# Nice to have
-
-- mark a dependency as being 'requested' but not 'approved' so that any subsequent imports before approval can choose to not include already requested dependencies.
-- differentiate between a package matching semver of requirements and a possible update
+- must support dependency tree having multiple versions of the same package.
+- generate md5 of import zip and snyk report.
 - download all npm deps tgz files
+- provide a mechanism previous requests to be tracked, and future compatibility to e.g. flagging a dependency has been requested previously
 
 
 # Plan
