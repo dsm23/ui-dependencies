@@ -1,17 +1,14 @@
 function contains(array1, array2) {
-  array1.some((s) => array2.indexOf(s) >= 0);
+  return array1.some((s) => array2.indexOf(s) >= 0);
 }
 
 // filter vulnerabilities to only include ones where the 'from' property is listed in dependencies
 function filterVulnerabilities(vulnerabilities, dependencies) {
-  return Object.keys(vulnerabilities).reduce((acc, key) => {
-   const vulnerability = vulnerabilities[key];
+  return vulnerabilities.filter((vulnerability) => {
    if(contains(vulnerability.from, Object.keys(dependencies))) {
-     return Object.assign({}, acc, {
-       [key]: vulnerability
-     });
+     return true
    }
-   return acc;
+   return false;
  }, {});
 }
 
