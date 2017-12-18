@@ -1,4 +1,9 @@
-// takes a flattened lock and removes dependencies that are already approved
+/**
+ * takes a flattened lock and removes dependencies that are already approved
+ * @param  {Object} dependencies flatened dependencies from a package lock
+ * @param  {Object} approved     approved dependencies
+ * @return {Object}              contents of dependencies without approved
+ */
 function getRequested(dependencies, approved) {
   return Object.keys(dependencies).reduce((acc, request) => {
       if(approved[request] === dependencies[request]) {
