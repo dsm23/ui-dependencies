@@ -3,6 +3,10 @@ const path = require('path');
 
 const requestsPath = './requests';
 
+/**
+ * Creates a new request folder based on the current datetime.
+ * @return {String} Path to the created request folder.
+ */
 function getRequestFolder() {
   if (!fs.existsSync(requestsPath)) {
     fs.mkdirSync(requestsPath);
