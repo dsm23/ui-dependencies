@@ -12,7 +12,6 @@ function getRequestFolder() {
   const requestFolder = `${now.getFullYear()}${now.getMonth().toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}${now.getSeconds().toString().padStart(2, '0')}`;
   const dir = path.join(requestsPath, requestFolder);
   fs.mkdirSync(dir);
-  fs.mkdirSync(path.join(dir, 'tarballs'));
   return dir;
 }
 

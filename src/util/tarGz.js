@@ -4,7 +4,7 @@ const path = require('path');
 function tarGz(source) {
   const outputPath = path.format(Object.assign({},
     path.parse(path.join(source)),
-    {ext:'.tar.gz', base: undefined})
+    {ext:'.tgz', base: undefined})
   );
   tar.c(
     {

@@ -42,19 +42,16 @@ createPackageForTest(lock, package, requestFolder);
 saveRequest(requested, requestFolder);
 npmInstall(requestFolder);
 const snykReport = snykTest(requestFolder);
-const resultsComplete = snykToHtml(requestFolder, 'complete-results', snykReport);
+const resultsComplete = snykToHtml(requestFolder, 'snyk-complete', snykReport);
 const filteredSnyk = filterSnyk(snykReport, requested);
-const resultsFiltered = snykToHtml(requestFolder, 'filtered-results', filteredSnyk);
+const resultsFiltered = snykToHtml(requestFolder, 'snyk-filtered', filteredSnyk);
 // TODO: tar then zip then md5
-const cSnykGz = tarGz(resultsComplete);
-const fSnykGz = tarGz(resultsFiltered);
-outputMd5ToFile(cSnykGz);
-outputMd5ToFile(fSnykGz);
+outputMd5ToFile(resultsComplete);
+outputMd5ToFile(resultsFiltered);
 
-
-const tarballs =  path.join(requestFolder, 'tarballs');
+const tarballs =  path.join(requestFolder, 'packages');
 console.log(`Saving tarballs to: ${tarballs}...`);
-slurp(requested, path.join(requestFolder, 'tarballs')).then(() => {
+slurp(requested, tarballs).then(() => {
   const tarballsgz = tarGz(tarballs);
   outputMd5ToFile(tarballsgz);
   console.log('...done');
