@@ -22,6 +22,8 @@ const npmInstall = require('../util/npmInstall');
 const snykTest = require('../util/snykTest');
 const filterSnyk = require('../util/filterSnyk');
 const snykToHtml = require('../util/snykToHtml');
+const outputMd5ToFile = require('../util/outputMd5ToFile');
+const tarGz = require('../util/tarGz');
 
 program
   .version('0.1.0')
@@ -40,12 +42,20 @@ createPackageForTest(lock, package, requestFolder);
 saveRequest(requested, requestFolder);
 npmInstall(requestFolder);
 const snykReport = snykTest(requestFolder);
-snykToHtml(requestFolder, 'complete-results', snykReport);
+const resultsComplete = snykToHtml(requestFolder, 'complete-results', snykReport);
 const filteredSnyk = filterSnyk(snykReport, requested);
-snykToHtml(requestFolder, 'filtered-results', filteredSnyk);
+const resultsFiltered = snykToHtml(requestFolder, 'filtered-results', filteredSnyk);
+// TODO: tar then zip then md5
+const cSnykGz = tarGz(resultsComplete);
+const fSnykGz = tarGz(resultsFiltered);
+outputMd5ToFile(cSnykGz);
+outputMd5ToFile(fSnykGz);
 
-console.log(`Saving tarballs to: ${requestFolder}...`);
 
+const tarballs =  path.join(requestFolder, 'tarballs');
+console.log(`Saving tarballs to: ${tarballs}...`);
 slurp(requested, path.join(requestFolder, 'tarballs')).then(() => {
+  const tarballsgz = tarGz(tarballs);
+  outputMd5ToFile(tarballsgz);
   console.log('...done');
 });

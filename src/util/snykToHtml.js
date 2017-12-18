@@ -9,6 +9,7 @@ function snykToHtml(packagePath, resultsFileName, report) {
       stdio: 'inherit'
     }
   );
+  return (path.join(packagePath, `${resultsFileName}.html`));
 }
 
 module.exports = snykToHtml;
