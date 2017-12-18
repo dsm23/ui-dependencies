@@ -8,7 +8,7 @@
 
 var program = require('commander');
 
-const loadLockFiles = require('../util/loadLockFiles');
+const loadLockFile = require('../util/loadLockFile');
 const flattenDependencies = require('../util/flattenDependencies');
 const loadApproved = require('../util/loadApproved');
 const saveApproved = require('../util/saveApproved');
@@ -20,7 +20,7 @@ program
 
 const relPathToLock = program.args[0];
 
-const fileContents = loadLockFiles(relPathToLock);
+const fileContents = loadLockFile(relPathToLock);
 const flattened = flattenDependencies({}, fileContents);
 
 const approved = loadApproved();
