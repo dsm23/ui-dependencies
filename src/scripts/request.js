@@ -45,7 +45,6 @@ const snykReport = snykTest(requestFolder);
 const resultsComplete = snykToHtml(requestFolder, 'snyk-complete', snykReport);
 const filteredSnyk = filterSnyk(snykReport, requested);
 const resultsFiltered = snykToHtml(requestFolder, 'snyk-filtered', filteredSnyk);
-// TODO: tar then zip then md5
 outputMd5ToFile(resultsComplete);
 outputMd5ToFile(resultsFiltered);
 
