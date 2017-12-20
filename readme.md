@@ -59,18 +59,12 @@ After running this, follow these steps:
 2. Create a Jira ticket in the secure environment with the following details and note the ticket number
   - assigned to: platform team
   - ticket type: import request
-  - Description:
-
-```
-snyk-filtered: {contents of snyk-filtered.md5}
-snyk-complete: {contents of snyk-complete.md5}
-packages: {contents of packages.md5 }
-```
-
+  - report md5: {contents of snyk-filtered.md5}
+  - packages md5: {contents of packages.md5 }
 3. Create a directory called `PFM-XXX` (where XXX is the Jira ticket number) in Box at https://ibm.ent.box.com/folder/40373591140, access to this can be granted by Daniel Stevenson or a member of the platform team.
 4. Upload `requests/yyyymmddhhmmss/packages.tgz` to this folder.
 5. Raise a PR to add `requests/yyyymmddhhmmss/packages.json` in to master.
-
+6. Send `snyk-filtered.html` to the support team via CJSM. If you don't have access to CJSM, you can email an encrypted version of these files to someone that does (e.g. Pete Lockey) using the standard passphrase (again, ask someone e.g. Pete Lockey if you don't know this).
 
 ### 3. Approval
 
