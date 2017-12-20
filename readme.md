@@ -33,13 +33,45 @@ Load the contents of a json file following the structure:
 
 ...and mark them all as approved.
 
-## Workflow
+## Workflow for getting npm modules in to the secure environment
 
-- A developer wants to add new packages so runs `copy-dependencies ./webapp ./ui-dependencies/merged` to update the local package json reference.
-- To ensure the package-lock is also updated, they run `npm install` inside `./ui-dependencies/merged`
-- Optionally a developer can check if there are new versions of dependencies they may also want to include. (TODO: use depcheck)
-- A developer creates a request folder by running `npm run request`.
-- If the request looks ok, the developer:
-  - emails the requested tarballs/reports/lists and/or creates a JIRA ticket (TODO: @Steve please can you detail this step)
-  - commits the generated `requests/yyyymmddhhmmss/requested.txt` and `requests/yyyymmddhhmmss/requested.json` to git
-- Once the packages are approved, the developer runs `npm run approve requests/yyyymmddhhmmss` and commits the updated `approved.json` to git.
+### 1. Adding new dependencies
+The first step is to add any new dependencies to the `./merged/package.json` (and associated lock) of tge ui-dependencies project:
+
+- run `copy-dependencies ./webapp ./ui-dependencies/merged`
+- run `npm install` inside `./ui-dependencies/merged`
+
+If you are not ready to raise a request at this point, you can open a pull request for the `merged/package.json` and `merged/package-lock.json` so that these packages are picked up by the next request.
+
+#### Semver updates
+
+- Optionally run `npm update` inside `./ui-dependencies/merged` in order to get the latest version of all dependencies respecting semver.
+- If you want to update packages ignoring semver, you can use the npm module `npm-check-updates`
+- Dependencies that have been copied across from another package should also be updated in the original package, or updated before copying across.
+
+### 2. Creating a request
+
+Once there have been updates to `merged/package.json` and/or `merged/package-lock.json`, you can creates a new request folder by running `npm run request` from the root of the ui-depencencies project.
+
+After running this, follow these steps:
+
+1. Review the `requests/yyyymmddhhmmss/requested.json` file to check it is what you are expecting.
+2. Create a Jira ticket in the secure environment with the following details and note the ticket number
+  - assigned to: platform team
+  - ticket type: import request
+  - Description:
+
+```
+snyk-filtered: {contents of snyk-filtered.md5}
+snyk-complete: {contents of snyk-complete.md5}
+packages: {contents of packages.md5 }
+```
+
+3. Create a directory called `PFM-XXX` (where XXX is the Jira ticket number) in Box at https://ibm.ent.box.com/folder/40373591140, access to this can be granted by Daniel Stevenson or a member of the platform team.
+4. Upload `requests/yyyymmddhhmmss/packages.tgz` to this folder.
+5. Raise a PR to add `requests/yyyymmddhhmmss/packages.json` in to master.
+
+
+### 3. Approval
+
+Once the packages are approved, run `npm run approve requests/yyyymmddhhmmss` and raise a PR to merge the updated `approved.json` to master.
