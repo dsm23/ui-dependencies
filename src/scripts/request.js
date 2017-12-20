@@ -36,9 +36,11 @@ const pkg = loadPackage(relPathToPackage);
 const dependencies = flattenDependencies({}, lock);
 const approved = loadApproved();
 const requested = getRequested(dependencies, approved);
+
 createPackageForTest(lock, pkg, requestFolder);
 saveRequest(requested, requestFolder);
 npmInstall(requestFolder);
+
 const snykReport = snykTest(requestFolder);
 const resultsComplete = snykToHtml(requestFolder, "snyk-complete", snykReport);
 const filteredSnyk = filterSnyk(snykReport, requested);
@@ -47,10 +49,12 @@ const resultsFiltered = snykToHtml(
   "snyk-filtered",
   filteredSnyk
 );
+
 outputMd5ToFile(resultsComplete);
 outputMd5ToFile(resultsFiltered);
 
 const tarballs = path.join(requestFolder, "packages");
+
 console.log(`Saving tarballs to: ${tarballs}...`);
 slurp(requested, tarballs).then(() => {
   const tarballsgz = tarGz(tarballs);
