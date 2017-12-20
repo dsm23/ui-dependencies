@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 /**
  * Output dependencies to a text file
@@ -7,10 +7,11 @@ const path = require('path');
  * @param  {String} directory    path to save the txt file
  */
 function outputDependencies(dependencies, directory) {
-  fs.writeFileSync(path.join(directory, 'requested.txt'),
+  fs.writeFileSync(
+    path.join(directory, "requested.txt"),
     dependencies.reduce((acc, dep) => {
-      return acc + dep + '\n';
-    }, '')
+      return acc + dep + "\n";
+    }, "")
   );
 }
 

@@ -1,5 +1,5 @@
-const jsonfile = require('jsonfile');
-const path = require('path');
+const jsonfile = require("jsonfile");
+const path = require("path");
 
 /**
  * Creates package.json and package-lock.json files in a request folder so that it can be processed by Snyk
@@ -7,9 +7,15 @@ const path = require('path');
  * @param  {Object} package       Contents of package file
  * @param  {String} requestFolder Path to request folder
  */
-function createPackageForTest(lock, package, requestFolder) {
-  jsonfile.writeFileSync(path.join(requestFolder, './package-lock.json'), lock, {spaces: 2});
-  jsonfile.writeFileSync(path.join(requestFolder, './package.json'), package, {spaces: 2});
+function createPackageForTest(lock, pkg, requestFolder) {
+  jsonfile.writeFileSync(
+    path.join(requestFolder, "./package-lock.json"),
+    lock,
+    { spaces: 2 }
+  );
+  jsonfile.writeFileSync(path.join(requestFolder, "./package.json"), pkg, {
+    spaces: 2
+  });
 }
 
 module.exports = createPackageForTest;

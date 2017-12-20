@@ -1,5 +1,5 @@
-const jsonfile = require('jsonfile');
-const path = require('path');
+const jsonfile = require("jsonfile");
+const path = require("path");
 
 /**
  * Load requested dependencies from a given request path
@@ -7,7 +7,10 @@ const path = require('path');
  * @return {Object}                   requested dependencies
  */
 function loadRequest(relPathToRequest) {
-  return jsonfile.readFileSync(path.join(relPathToRequest, './requested.json'), 'utf8');
+  return jsonfile.readFileSync(
+    path.join(relPathToRequest, "./requested.json"),
+    "utf8"
+  );
 }
 
-module.exports = loadRequest
+module.exports = loadRequest;

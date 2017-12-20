@@ -7,16 +7,13 @@
 //  ```
 //
 //  ...and mark them all as approved.
-var program = require('commander');
+const program = require("commander");
 
-const loadRequest = require('../util/loadRequest');
-const loadApproved = require('../util/loadApproved');
-const saveApproved = require('../util/saveApproved');
+const loadRequest = require("../util/loadRequest");
+const loadApproved = require("../util/loadApproved");
+const saveApproved = require("../util/saveApproved");
 
-
-program
- .version('0.1.0')
- .parse(process.argv);
+program.version("0.1.0").parse(process.argv);
 
 const relPathToRequest = program.args[0];
 
@@ -25,4 +22,4 @@ const request = loadRequest(relPathToRequest);
 const updatedApproved = Object.assign({}, approved, request);
 saveApproved(updatedApproved);
 
-console.log('done');
+console.log("done");

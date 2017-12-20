@@ -1,5 +1,5 @@
-const jsonfile = require('jsonfile');
-const path = require('path');
+const jsonfile = require("jsonfile");
+const path = require("path");
 
 /**
  * Load a pakage lock from a given module path
@@ -7,7 +7,10 @@ const path = require('path');
  * @return {Object}            package lock contents
  */
 function loadLockFile(modulePath) {
-  return jsonfile.readFileSync(path.join(modulePath, 'package-lock.json'), 'utf8');
+  return jsonfile.readFileSync(
+    path.join(modulePath, "package-lock.json"),
+    "utf8"
+  );
 }
 
 module.exports = loadLockFile;

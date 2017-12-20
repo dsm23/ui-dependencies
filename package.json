@@ -9,7 +9,8 @@
   "scripts": {
     "init": "node ./src/scripts/init.js ./merged",
     "request": "node ./src/scripts/request.js ./merged",
-    "approve": "node ./src/scripts/approve.js"
+    "approve": "node ./src/scripts/approve.js",
+    "eslint": "eslint ./src --fix"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -23,7 +24,11 @@
   },
   "devDependencies": {
     "eslint": "^4.13.0",
-    "eslint-plugin-node": "^5.2.1"
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-prettier": "2.4.0",
+    "prettier": "1.9.2"
   },
   "repository": {
     "type": "git",

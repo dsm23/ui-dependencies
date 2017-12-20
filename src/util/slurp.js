@@ -1,4 +1,4 @@
-const download = require('download');
+const download = require("download");
 
 /**
  * Download all packages to the target folder

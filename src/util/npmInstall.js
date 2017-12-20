@@ -1,4 +1,4 @@
-const execSync = require('child_process').execSync;
+const execSync = require("child_process").execSync;
 
 /**
  * Run npm install on a given package (e.g. so that Snyk can be run)
@@ -7,8 +7,9 @@ const execSync = require('child_process').execSync;
 function npmInstall(packagePath) {
   execSync(
     // eslint-disable-next-line max-len
-    `cd ${packagePath} && npm install`, {
-      stdio: 'inherit'
+    `cd ${packagePath} && npm install`,
+    {
+      stdio: "inherit"
     }
   );
 }

@@ -1,5 +1,5 @@
-const jsonfile = require('jsonfile');
-const path = require('path');
+const jsonfile = require("jsonfile");
+const path = require("path");
 
 /**
  * Load a pakage from a given module path
@@ -7,7 +7,7 @@ const path = require('path');
  * @return {Object}            package contents
  */
 function loadPackage(modulePath) {
-  return jsonfile.readFileSync(path.join(modulePath, 'package.json'), 'utf8');
+  return jsonfile.readFileSync(path.join(modulePath, "package.json"), "utf8");
 }
 
 module.exports = loadPackage;

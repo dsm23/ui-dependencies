@@ -1,4 +1,4 @@
-const execSync = require('child_process').execSync;
+const execSync = require("child_process").execSync;
 
 /**
  * Run snyk test on a package
@@ -8,12 +8,10 @@ const execSync = require('child_process').execSync;
 function snykTest(packagePath) {
   // TODO: exec is limited to 200kb, use spawn instead to support larger reports
 
-  let snykReport
+  let snykReport;
   try {
-    snykReport = execSync(
-      `cd ${packagePath} && snyk test --dev --json`
-    );
-  } catch(e) {
+    snykReport = execSync(`cd ${packagePath} && snyk test --dev --json`);
+  } catch (e) {
     snykReport = e.stdout;
   }
 

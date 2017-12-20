@@ -5,7 +5,7 @@
  * @return {bool}         true if array1 contains an element in array 2
  */
 function contains(array1, array2) {
-  return array1.some((s) => array2.indexOf(s) >= 0);
+  return array1.some(s => array2.indexOf(s) >= 0);
 }
 
 /**
@@ -15,12 +15,12 @@ function contains(array1, array2) {
  * @return {Object}                 Filtered dependencies
  */
 function filterVulnerabilities(vulnerabilities, dependencies) {
-  return vulnerabilities.filter((vulnerability) => {
-   if(contains(vulnerability.from, Object.keys(dependencies))) {
-     return true
-   }
-   return false;
- }, {});
+  return vulnerabilities.filter(vulnerability => {
+    if (contains(vulnerability.from, Object.keys(dependencies))) {
+      return true;
+    }
+    return false;
+  }, {});
 }
 
 /**

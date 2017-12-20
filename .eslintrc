@@ -1,7 +1,11 @@
 {
-    "plugins": ["node"],
-    "extends": ["eslint:recommended", "plugin:node/recommended"],
+    "plugins": ["prettier", "node"],
+    "extends": ["airbnb-base", "eslint:recommended", "plugin:node/recommended"],
     "rules": {
-        "node/exports-style": ["error", "module.exports"]
+        "node/exports-style": ["error", "module.exports"],
+        "prettier/prettier": "error",
+        "no-console": 0,
+        "prefer-const": "error",
+        "no-var": "error"
     }
 }
