@@ -5,13 +5,9 @@ const execSync = require("child_process").execSync;
  * @param  {String} packagePath path to package
  */
 function npmInstall(packagePath) {
-  execSync(
-    // eslint-disable-next-line max-len
-    `cd ${packagePath} && npm install`,
-    {
-      stdio: "inherit"
-    }
-  );
+  execSync(`cd ${packagePath} && npm install`, {
+    stdio: "inherit"
+  });
 }
 
 module.exports = npmInstall;
