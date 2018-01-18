@@ -1,25 +1,13 @@
 /**
- * Checks if array1 an element in array2
- * @param  {Array} array1
- * @param  {Array} array2
- * @return {bool}         true if array1 contains an element in array 2
+ * filter vulnerabilities to only include ones where the 'from' property is listed in requestedDependencies
+ * @param  {Object} vulnerabilities           Snyk vulnerabilities
+ * @param  {Object} requestedDependencies     Dependencies that are requesting to be added
+ * @return {Object}                           Filtered dependencies
  */
-function contains(array1, array2) {
-  return array1.some(s => array2.indexOf(s) >= 0);
-}
-
-/**
- * filter vulnerabilities to only include ones where the 'from' property is listed in dependencies
- * @param  {Object} vulnerabilities Snyk vulnerabilities
- * @param  {Object} dependencies    Dependencies that we care about
- * @return {Object}                 Filtered dependencies
- */
-function filterVulnerabilities(vulnerabilities, dependencies) {
+function filterVulnerabilities(vulnerabilities, requestedDependencies) {
   return vulnerabilities.filter(vulnerability => {
-    if (contains(vulnerability.from, Object.keys(dependencies))) {
-      return true;
-    }
-    return false;
+    const from = vulnerability.from[vulnerability.from.length - 1];
+    return Object.keys(requestedDependencies).some(d => d === from);
   }, {});
 }
 

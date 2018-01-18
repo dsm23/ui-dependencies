@@ -51,7 +51,10 @@ If you are not ready to raise a request at this point, you can open a pull reque
 
 ### 2. Creating a request
 
-Once there have been updates to `merged/package.json` and/or `merged/package-lock.json`, you can creates a new request folder by running `npm run request` from the root of the ui-depencencies project.
+Once there have been updates to `merged/package.json` and/or `merged/package-lock.json`, you can create a new request folder by:
+
+- ensuring `npm install && npm prune` has been done in the `merged` folder if not already done in previous step
+- run `npm run request` from the root of the ui-depencencies project
 
 After running this, follow these steps:
 
