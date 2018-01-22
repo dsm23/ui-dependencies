@@ -1,0 +1,6 @@
+{
+  "es6-promise@4.1.1": "https://registry.npmjs.org/es6-promise/-/es6-promise-4.1.1.tgz",
+  "is-wsl@1.1.0": "https://registry.npmjs.org/is-wsl/-/is-wsl-1.1.0.tgz",
+  "raw-body@2.3.2": "https://registry.npmjs.org/raw-body/-/raw-body-2.3.2.tgz",
+  "remove-trailing-separator@1.1.0": "https://registry.npmjs.org/remove-trailing-separator/-/remove-trailing-separator-1.1.0.tgz"
+}
