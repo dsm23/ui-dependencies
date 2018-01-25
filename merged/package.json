@@ -21,7 +21,6 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.17.1",
-    "co": "^4.6.0",
     "config": "^1.29.2",
     "faucet": "0.0.1",
     "final-form": "^4.0.4",
