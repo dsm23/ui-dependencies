@@ -60,10 +60,12 @@ After running this, follow these steps:
 
 1. Review the `requests/yyyymmddhhmmss/requested.json` file to check it is what you are expecting.
 2. Create a Jira ticket in the secure environment with the following details and note the ticket number
-  - assigned to: platform team
-  - ticket type: import request
-  - report md5: {contents of snyk-filtered.md5}
-  - packages md5: {contents of packages.md5 }
+  - Project: Platform
+  - Issue Type: Import Request
+  - Import Type: NPM
+  - MD5 Hash - Artifact: {contents of packages.md5 }
+  - MD5 Hash - Scan Report: {contents of snyk-complete.md5}
+  - Import File Target Location: Artifactory
 3. Create a directory called `PFM-XXX` (where XXX is the Jira ticket number) in Box at https://ibm.ent.box.com/folder/40373591140, access to this can be granted by Daniel Stevenson or a member of the platform team.
 4. Upload `requests/yyyymmddhhmmss/packages.tgz` to this folder.
 5. Raise a PR to add `requests/yyyymmddhhmmss/packages.json` in to master.
