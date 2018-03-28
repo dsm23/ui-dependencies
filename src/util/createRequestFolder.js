@@ -1,20 +1,17 @@
 const fs = require("fs");
 const path = require("path");
 
-const requestsPath = "./requests";
-
 /**
  * Creates a new request folder based on the current datetime.
  * @return {String} Path to the created request folder.
  */
-function getRequestFolder() {
+function createRequestFolder(requestsPath = "./requests") {
   if (!fs.existsSync(requestsPath)) {
     fs.mkdirSync(requestsPath);
   }
 
   const now = new Date();
-  const requestFolder = `${now.getFullYear()}${now
-    .getMonth()
+  const requestFolder = `${now.getFullYear()}${(now.getMonth() + 1)
     .toString()
     .padStart(2, "0")}${now
     .getDate()
@@ -32,7 +29,10 @@ function getRequestFolder() {
   const dir = path.join(requestsPath, requestFolder);
   fs.mkdirSync(dir);
   fs.mkdirSync(path.join(dir, "packages"));
-  return dir;
+  return {
+    requestId: requestFolder,
+    requestPath: dir
+  };
 }
 
-module.exports = getRequestFolder;
+module.exports = createRequestFolder;

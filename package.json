@@ -8,7 +8,10 @@
   },
   "scripts": {
     "init": "node ./src/scripts/init.js ./merged",
-    "request": "node ./src/scripts/request.js ./merged",
+    "request": "npm run request:new && npm run request:test && npm run request:download",
+    "request:new": "node ./src/scripts/request/new.js ./merged",
+    "request:test": "node ./src/scripts/request/test.js",
+    "request:download": "node ./src/scripts/request/download.js",
     "approve": "node ./src/scripts/approve.js",
     "eslint": "eslint ./src --fix"
   },
