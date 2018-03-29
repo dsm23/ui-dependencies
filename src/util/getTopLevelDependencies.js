@@ -13,9 +13,7 @@ function getTopLevelDependencies(path) {
   } catch (e) {
     cliOutput = e.stdout;
   }
-  console.log("data");
   const data = JSON.parse(cliOutput);
-  console.log(data);
   return data.dependencies;
 }
 
