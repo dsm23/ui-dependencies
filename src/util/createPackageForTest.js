@@ -8,11 +8,13 @@ const path = require("path");
  * @param  {String} requestFolder Path to request folder
  */
 function createPackageForTest(lock, pkg, requestFolder) {
-  jsonfile.writeFileSync(
-    path.join(requestFolder, "./package-lock.json"),
-    lock,
-    { spaces: 2 }
-  );
+  if (lock) {
+    jsonfile.writeFileSync(
+      path.join(requestFolder, "./package-lock.json"),
+      lock,
+      { spaces: 2 }
+    );
+  }
   jsonfile.writeFileSync(path.join(requestFolder, "./package.json"), pkg, {
     spaces: 2
   });
