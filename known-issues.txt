@@ -1,0 +1,70 @@
+Low Severity
+Regular Expression Denial of Service (ReDoS)
+Vulnerable module: braces
+
+The braces module is not one we use directly but instead is only used via modules related to unit testing, so for us it's a vulnerability that can affect build-time only, and since we control our build environments doesn't really apply.
+
+
+Medium Severity
+Regular Expression Denial of Service (ReDoS)
+Vulnerable module: content-type-parser
+
+This specific vulnerability has been present in our report for some time - we're introducing it now via a few more paths than before, but it only applies to build-time and cannot affect run-time.
+
+
+Low Severity
+Regular Expression Denial of Service (ReDoS)
+Vulnerable module: debug
+
+This vulnerability present for quite some time in our report and only affects build/test.
+
+
+Low Severity
+Prototype Pollution
+Vulnerable module: hoek
+
+Module is only used via build and test related module, and is not used directly.
+This vulnerability is present down many many paths, however as it's only used via build and test modules the risks involved are minimal.
+
+
+Low Severity
+Regular Expression Denial of Service (ReDoS)
+Vulnerable module: is-my-json-valid
+
+As with other modules, this is used only via build and test, and is not used directly, so presents minimal risk.
+
+
+Low Severity
+Prototype Pollution
+Vulnerable module: lodash
+
+Lodash is not used directly by our code, but is used via many many routes, primarily for build/test tooling, but with a few instances of run-time usage.
+The nature of this vulnerability is such that it provides essentially no risk to us.  We do not use lodash directly, and given how we do indirectly use it in our run-time environment it would be exceedingly difficult to exploit - for example requiring the API server to be compromised - even then it's unlikely that the manner in which lodash is used would allow for this vulnerability to be exploited..
+
+
+Low Severity
+Regular Expression Denial of Service (ReDoS)
+Vulnerable module: ms
+
+Vulnerability previously identified and only affects build-time unit testing.
+
+
+Medium Severity
+Regular Expression Denial of Service (ReDoS)
+Vulnerable module: node-forge
+
+This module is not used directly, and only used via the development web-server and so cannot affect production.
+
+
+High Severity
+Command Injection
+Vulnerable module: shelljs
+
+Previously identified vulnerability.  Only applicable to build-time.
+
+
+Medium Severity
+Uninitialized Memory Exposure
+Vulnerable module: tunnel-agent
+
+Previously identified vulnerability.  Only applicable to build-time.
