@@ -8,10 +8,6 @@ const program = require("commander");
 
 const loadLockFile = require("../../util/loadLockFile");
 const loadPackage = require("../../util/loadPackage");
-const flattenDependencies = require("../../util/flattenDependencies");
-const loadApproved = require("../../util/loadApproved");
-const saveRequest = require("../../util/saveRequest");
-const getRequested = require("../../util/getRequested");
 const createRequestFolder = require("../../util/createRequestFolder");
 const createPackageForTest = require("../../util/createPackageForTest");
 const linkLatest = require("../../util/linkLatest");
@@ -24,10 +20,6 @@ const { requestId, requestPath } = createRequestFolder();
 console.log("Generating request in " + requestPath);
 const lock = loadLockFile(relPathToPackage);
 const pkg = loadPackage(relPathToPackage);
-const approved = loadApproved();
-const dependencies = flattenDependencies({}, lock);
-const requested = getRequested(dependencies, approved);
 
 createPackageForTest(lock, pkg, requestPath);
-saveRequest(requested, requestPath);
 linkLatest(requestId);

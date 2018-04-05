@@ -61,6 +61,7 @@ Once there have been updates to `merged/package.json` and/or `merged/package-loc
 npm run request:new
 npm run request:minimal
 npm run request:test
+npm run request:request
 npm run request:download
 ```
 
