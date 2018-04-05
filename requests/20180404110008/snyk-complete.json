@@ -1,1 +1,1 @@
-{"ok":false,"error":"413","path":"/Users/penx/Development/ibm/ui-dependencies/requests/20180404110008"}
+{"ok":true,"vulnerabilities":[],"dependencyCount":519,"org":"penx","licensesPolicy":null,"isPrivate":true,"packageManager":"npm","policy":"# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.\nversion: v1.10.2\nignore: {}\npatch: {}\n","ignoreSettings":null,"summary":"No known vulnerabilities","filesystemPolicy":false,"uniqueCount":0,"path":"/Users/penx/Development/ibm/ui-dependencies/requests/20180404110008"}
