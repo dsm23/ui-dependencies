@@ -56,14 +56,7 @@ Once there have been updates to `merged/package.json` and/or `merged/package-loc
 
 - ensuring `npm install && npm prune` has been done in the `merged` folder if not already done in previous step
 - run `npm run request` from the root of the ui-depencencies project
-  - alternatively, for a minimal request, run:
-```
-npm run request:new
-npm run request:minimal
-npm run request:test
-npm run request:request
-npm run request:download
-```
+  - alternatively, for a minimal request, run `npm run minimal`, or for a minimal request with any modules that introduce vulnerabilities removed, run `npm run no-vulnerabilities`.
 
 After running this, follow these steps:
 
