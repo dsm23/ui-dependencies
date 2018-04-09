@@ -6,7 +6,6 @@
 // - build a package.json that can be used by snyk
 const program = require("commander");
 
-const loadLockFile = require("../../util/loadLockFile");
 const loadPackage = require("../../util/loadPackage");
 const createRequestFolder = require("../../util/createRequestFolder");
 const createPackageForTest = require("../../util/createPackageForTest");
@@ -18,8 +17,7 @@ const relPathToPackage = program.args[0];
 
 const { requestId, requestPath } = createRequestFolder();
 console.log("Generating request in " + requestPath);
-const lock = loadLockFile(relPathToPackage);
 const pkg = loadPackage(relPathToPackage);
 
-createPackageForTest(lock, pkg, requestPath);
+createPackageForTest(null, pkg, requestPath);
 linkLatest(requestId);
