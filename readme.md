@@ -62,7 +62,7 @@ After running this, follow these steps:
 
 1. Review the `requests/yyyymmddhhmmss/requested.json` file to check it is what you are expecting.
 2. Create a Jira ticket in the secure environment with the following details and note the ticket number
-  - Project: xystems Team (SYS)
+  - Project: Systems Team (SYS)
   - Issue Type: Import Request
   - Summary: UI Dependencies yyyymmddhhmmss
   - Import Type: NPM
