@@ -62,15 +62,16 @@ After running this, follow these steps:
 
 1. Review the `requests/yyyymmddhhmmss/requested.json` file to check it is what you are expecting.
 2. Create a Jira ticket in the secure environment with the following details and note the ticket number
-  - Project: Systems Team
-  - Summary: UI Dependencies yyyymmddhhmmss
+  - Project: Systems Team (SYS)
   - Issue Type: Import Request
+  - Summary: UI Dependencies yyyymmddhhmmss
   - Import Type: NPM
   - Justification: Dependencies required for UI project
   - MD5 Hash - Artifact: {contents of packages.md5 }
   - MD5 Hash - Scan Report: {contents of snyk-complete.md5}
   - File Current Location: Box - NLEDS Third Party Software Drop
-  - Import File Target Location: Artifactory
+  - Import File Target Location: Artifactory - third-party-npms
+  - Description: Please unpackage packages.tgz before importing using tar/gzip (available in Git Bash in the dev VMs)
 3. Create a directory called `SYS-XXX` (where XXX is the Jira ticket number) in Box at https://ibm.ent.box.com/folder/40373591140, access to this can be granted by Daniel Stevenson or a member of the platform team.
 4. Upload `requests/yyyymmddhhmmss/packages.tgz` to this folder.
 5. Raise a PR to add `requests/yyyymmddhhmmss/packages.json` in to master.
