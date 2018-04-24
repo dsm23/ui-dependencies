@@ -55,6 +55,7 @@ If you are not ready to raise a request at this point, you can open a pull reque
 Once there have been updates to `merged/package.json` and/or `merged/package-lock.json`, you can create a new request folder by:
 
 - ensuring `npm install && npm prune` has been done in the `merged` folder if not already done in previous step
+- esnure that `snyk` and `snyk-to-html` are installed globally on your machine.
 - run `npm run request` from the root of the ui-depencencies project
   - alternatively, for a minimal request, run `npm run minimal`, or for a minimal request with any modules that introduce vulnerabilities removed, run `npm run no-vulnerabilities`.
 
