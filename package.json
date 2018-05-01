@@ -9,8 +9,8 @@
   "scripts": {
     "init": "node ./src/scripts/init.js ./merged",
     "request": "npm run request:new && npm run request:test && npm run request:request && npm run request:download",
-    "minimal":  "npm run request:new && npm run request:minimal && npm run request:test && npm run request:request && npm run request:download",
-    "no-vulnerabilities":  "npm run request:new && npm run request:minimal && npm run request:test && npm run request:remove-vulnerable && npm run request:test && npm run request:request && npm run request:download",
+    "minimal": "npm run request:new && npm run request:minimal && npm run request:test && npm run request:request && npm run request:download",
+    "no-vulnerabilities": "npm run request:new && npm run request:minimal && npm run request:test && npm run request:remove-vulnerable && npm run request:test && npm run request:request && npm run request:download",
     "request:new": "node ./src/scripts/request/new.js ./merged",
     "request:minimal": "node ./src/scripts/request/minimal.js",
     "request:test": "node ./src/scripts/request/test.js",
