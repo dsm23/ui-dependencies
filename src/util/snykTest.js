@@ -1,3 +1,5 @@
+const jsonfile = require("jsonfile");
+const path = require("path");
 const execSync = require("child_process").execSync;
 
 /**
@@ -17,6 +19,9 @@ function snykTest(packagePath) {
 
   const report = JSON.parse(snykReport);
   if (report.error) {
+    console.warn("Snyk returned error");
+    console.warn(report.error);
+    jsonfile.writeFileSync(path.join(packagePath, `snyk-error.json`), report);
     throw new Error(`Snyk returned error: ${report.error}`);
   }
   return report;
