@@ -15,7 +15,11 @@ function snykTest(packagePath) {
     snykReport = e.stdout;
   }
 
-  return JSON.parse(snykReport);
+  const report = JSON.parse(snykReport);
+  if (report.error) {
+    throw new Error(`Snyk returned error: ${report.error}`);
+  }
+  return report;
 }
 
 module.exports = snykTest;
