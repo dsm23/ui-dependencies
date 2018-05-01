@@ -58,6 +58,12 @@ Once there have been updates to `merged/package.json` and/or `merged/package-loc
 - esnure that `snyk` and `snyk-to-html` are installed globally on your machine.
 - run `npm run request` from the root of the ui-depencencies project
   - alternatively, for a minimal request, run `npm run minimal`, or for a minimal request with any modules that introduce vulnerabilities removed, run `npm run no-vulnerabilities`.
+  - another option, if you want to only import specific modules, is to do the following:
+    - `npm run request:new`
+    - manually edit requests/latest/package.json and remove any modules you don't want to include in your import
+    - `npm run request:test`
+    - `npm run request:request`
+    - `npm run request:download`
 
 After running this, follow these steps:
 
