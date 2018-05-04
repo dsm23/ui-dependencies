@@ -1,3 +1,63 @@
+Uninitialized Memory Exposure
+MEDIUM SEVERITY
+Vulnerable module: atob
+
+This module is a sub dependency of jest-emotion and jest-glamor-react.
+We only use these modules for running unit tests, we do not intend to bundle them in any production code.
+
+Prototype Pollution
+LOW SEVERITY
+Vulnerable module: deep-extend
+
+This module is a sub dependency of tape-watch, jest, webpack-dev-server, webpack, @storybook/react, nwb, react-scripts, cpx and babel-cli.
+All of these are development tools that are used for building/unit testing. We do not intend to include them in a production build.
+
+Regular Expression Denial of Service (ReDoS)
+LOW SEVERITY
+Vulnerable module: diff
+
+This module is a sub dependency of react-scripts, jest-diff, nwb, expect, jest-glamor-react, sinon and jest.
+These are all development tools used for building and unit testing. We do not intend to include them in a production build.
+
+Regular Expression Denial of Service (ReDoS)
+LOW SEVERITY
+Vulnerable module: eslint
+eslint is only used for linting/testing code during development. We do not intend to include it in a production build.
+
+Regular Expression Denial of Service (ReDoS)
+LOW SEVERITY
+Vulnerable module: nwmatcher
+Introduced through react-scripts, jsdom, jest, which are all developer tools for building and unit testing. We do not intend to include this module in production builds so are not concerned about DDoS issues.
+
+Prototype Override
+HIGH SEVERITY
+Vulnerable module: querystringify
+This is introduced through react-scripts, @storybook/react and webpack-dev-server.
+These are all developer tools for building and debugging. We do not intend to run any of these in a production environment so are not concerned about malicious query strings.
+
+Uninitialized Memory Exposure
+HIGH SEVERITY
+Vulnerable module: http-proxy-agent
+This is introduced via nwb, which is a tool we intend to use for small module builds. As far as I'm aware it only uses http-proxy-agent for running local development and testing environments, so this issue would not affect any production or publicly available code.
+
+Uninitialized Memory Exposure
+HIGH SEVERITY
+Vulnerable module: https-proxy-agent
+This is introduced via nwb, which is a tool we intend to use for small module builds. As far as I'm aware it only uses http-proxy-agent for running local development and testing environments, so this issue would not affect any production or publicly available code.
+
+Uninitialized Memory Exposure
+MEDIUM SEVERITY
+Vulnerable module: ip
+This is introduced via nwb, which is a tool we intend to use for small module builds. As it's a developer tool, we do not intend to be running `ip` or nwb in an environment where we would be concerned about the executing code leaking information from memory, therefore the raised security issue is not relevant.
+
+
+Regular Expression Denial of Service (ReDoS)
+HIGH SEVERITY
+Vulnerable module: timespan
+This is introduced through nwb and it's sub dependency of karma.
+Karma is a unit testing framework, unit tests would only be run in controlled environments and karma would not be deployed to production environments, so we are not concerned about DDoS issues.
+
+
 Low Severity
 Regular Expression Denial of Service (ReDoS)
 Vulnerable module: braces
