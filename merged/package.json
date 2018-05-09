@@ -42,6 +42,8 @@
     "openapi-mock": "0.0.7",
     "passport": "^0.4.0",
     "passport-anonymous": "^1.0.1",
+    "passport-openid": "^0.4.0",
+    "passport-openidconnect": "0.0.2",
     "rc-pagination": "^1.16.2",
     "react-collapse": "^4.0.3",
     "react-emotion": "^9.1.2",
