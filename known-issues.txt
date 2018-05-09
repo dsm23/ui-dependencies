@@ -1,10 +1,3 @@
-Uninitialized Memory Exposure
-MEDIUM SEVERITY
-Vulnerable module: atob
-
-This module is a sub dependency of jest-emotion and jest-glamor-react.
-We only use these modules for running unit tests, we do not intend to bundle them in any production code.
-
 Prototype Pollution
 LOW SEVERITY
 Vulnerable module: deep-extend
@@ -43,7 +36,7 @@ This is introduced via nwb, which is a tool we intend to use for small module bu
 Uninitialized Memory Exposure
 HIGH SEVERITY
 Vulnerable module: https-proxy-agent
-This is introduced via nwb, which is a tool we intend to use for small module builds. As far as I'm aware it only uses http-proxy-agent for running local development and testing environments, so this issue would not affect any production or publicly available code.
+This is introduced via nwb, which is a tool we intend to use for small module builds. As far as I'm aware it only uses https-proxy-agent for running local development and testing environments, so this issue would not affect any production or publicly available code.
 
 Uninitialized Memory Exposure
 MEDIUM SEVERITY
@@ -88,13 +81,6 @@ This vulnerability is present down many many paths, however as it's only used vi
 
 
 Low Severity
-Regular Expression Denial of Service (ReDoS)
-Vulnerable module: is-my-json-valid
-
-As with other modules, this is used only via build and test, and is not used directly, so presents minimal risk.
-
-
-Low Severity
 Prototype Pollution
 Vulnerable module: lodash
 
@@ -109,13 +95,6 @@ Vulnerable module: ms
 Vulnerability previously identified and only affects build-time unit testing.
 
 
-Medium Severity
-Regular Expression Denial of Service (ReDoS)
-Vulnerable module: node-forge
-
-This module is not used directly, and only used via the development web-server and so cannot affect production.
-
-
 High Severity
 Command Injection
 Vulnerable module: shelljs
@@ -128,3 +107,10 @@ Uninitialized Memory Exposure
 Vulnerable module: tunnel-agent
 
 Previously identified vulnerability.  Only applicable to build-time.
+
+
+Low Severity
+Regular Expression Denial of Service (ReDoS)
+Vulnerable module: validator
+
+Module is only used via oas-raml-converter, which is only used as tooling to prepare data for a prototype stub server.
