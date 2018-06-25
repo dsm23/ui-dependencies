@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Language" content="en-us">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Snyk test report</title>
+    <meta name="description" content="6 known vulnerabilities found in 98 vulnerable dependency paths.">
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/snyk/image/upload/v1468845142/favicon/favicon.png" sizes="194x194">
+    <link rel="shortcut icon" href="https://res.cloudinary.com/snyk/image/upload/v1468845142/favicon/favicon.ico">
+    <!--<link rel="stylesheet" href="https://static.snyk.io/prod/static-assets/style/build/initial.min.67beb0802da87abfd2bd1a320acac842.md5.css">-->
+  </head>
+  <body class="section-projects">
+
+<main class="layout-stacked">
+
+  <style type="text/css">
+
+  body {
+    -moz-font-feature-settings: "pnum";
+    -webkit-font-feature-settings: "pnum";
+    font-variant-numeric: proportional-nums;
+    display: flex;
+    flex-direction: column;
+    font-feature-settings: "pnum";
+    font-size: 100%;
+    line-height: 1.5;
+    min-height: 100vh;
+    -webkit-text-size-adjust: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #F5F5F5;
+    font-family: 'Arial', 'Helvetica', Calibri, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 500;
+  }
+
+  a,
+  a:link,
+  a:visited {
+    border-bottom: 1px solid #4b45a9;
+    text-decoration: none;
+    color: #4b45a9;
+  }
+
+  a:hover,
+  a:focus,
+  a:active {
+    border-bottom: 2px solid #4b45a9;
+  }
+
+  hr {
+    border: none;
+    margin: 1em 0;
+    border-top: 1px solid #c5c5c5;
+  }
+
+  ul {
+    padding: 0 1em;
+    margin: 1em 0;
+  }
+
+  code {
+    background-color: #EEE;
+    color: #333;
+    padding: 0.25em 0.5em;
+    border-radius: 0.25em;
+  }
+
+  pre {
+    background-color: #333;
+    font-family: monospace;
+    padding: 0.5em 1em 0.75em;
+    border-radius: 0.25em;
+    font-size: 14px;
+  }
+
+  pre code {
+    padding: 0;
+    background-color: transparent;
+    color: #fff;
+  }
+
+  a code {
+    border-radius: .125rem .125rem 0 0;
+    padding-bottom: 0;
+    color: #4b45a9;
+  }
+
+  a[href^="http://"]:after,
+  a[href^="https://"]:after {
+    background-image: linear-gradient(transparent,transparent),url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20112%20109%22%3E%3Cg%20id%3D%22Page-1%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20id%3D%22link-external%22%3E%3Cg%20id%3D%22arrow%22%3E%3Cpath%20id%3D%22Line%22%20stroke%3D%22%234B45A9%22%20stroke-width%3D%2215%22%20d%3D%22M88.5%2021l-43%2042.5%22%20stroke-linecap%3D%22square%22%2F%3E%3Cpath%20id%3D%22Triangle%22%20fill%3D%22%234B45A9%22%20d%3D%22M111.2%200v50L61%200z%22%2F%3E%3C%2Fg%3E%3Cpath%20id%3D%22square%22%20fill%3D%22%234B45A9%22%20d%3D%22M66%2015H0v94h94V44L79%2059v35H15V30h36z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-size: .75rem;
+    content: "";
+    display: inline-block;
+    height: .75rem;
+    margin-left: .25rem;
+    width: .75rem;
+  }
+
+
+/* Layout */
+
+  [class*=layout-container] {
+    margin: 0 auto;
+    max-width: 71.25em;
+    padding: 1.9em 1.3em;
+    position: relative;
+  }
+  .layout-container--short {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .layout-container--short:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+
+/* Header */
+
+  .header {
+    padding-bottom: 1px;
+  }
+
+  .project__header {
+    background-color: #4C4A73;
+    color: #fff;
+    margin-bottom: -1px;
+    padding-top: 1em;
+    padding-bottom: 0.25em;
+    border-bottom: 2px solid #BBB;
+  }
+
+  .project__header__title {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    margin-bottom: .1em;
+    margin-top: 0;
+    float: left;
+  }
+
+  .timestamp {
+    float: right;
+    clear: none;
+    margin-bottom: 0;
+  }
+
+  .meta-counts {
+    clear: both;
+    display: block;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 0 1.5em;
+    color: #fff;
+    clear: both;
+    font-size: 1.1em;
+  }
+
+  .meta-count {
+    display: block;
+    flex-basis: 100%;
+    margin: 0 1em 1em 0;
+    float: left;
+    padding-right: 1em;
+    border-right: 2px solid #fff;
+  }
+
+  .meta-count:last-child {
+    border-right: 0;
+    padding-right: 0;
+    margin-right: 0;
+  }
+
+/* Card */
+
+  .card {
+    background-color: #fff;
+    border: 1px solid #c5c5c5;
+    border-radius: .25rem;
+    margin: 0 0 2em 0;
+    position: relative;
+    min-height: 40px;
+    padding: 1.5em;
+  }
+
+  .card .label {
+    background-color: #767676;
+    border: 2px solid #767676;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    display: inline-block;
+    margin: 0;
+    border-radius: 0.25rem;
+  }
+
+  .card .label__text {
+    vertical-align: text-top;
+  }
+
+  .card .label--high {
+    background-color: #B51B72;
+    border-color: #B51B72;
+  }
+
+  .card .label--medium {
+    background-color: #E29022;
+    border-color: #E29022;
+  }
+
+  .card .label--low {
+    background-color: #222049;
+    border-color: #222049;
+  }
+
+  .card .card.severity--low {
+    border-color: #222049;
+  }
+
+  .card .card.severity--medium {
+    border-color: #E29022;
+  }
+
+  .card .card.severity--high {
+    border-color: #B51B72;
+  }
+
+  .card--vuln {
+    padding-top: 4em;
+    max-width: 48.75em;
+  }
+
+  .card--vuln .label {
+    left: 0;
+    position: absolute;
+    top: 1.1em;
+    padding-left: 1.9em;
+    padding-right: 1.9em;
+    border-radius: 0 0.25rem 0.25rem 0;
+  }
+
+  .card--vuln .card__section h2 {
+    font-size: 22px;
+    margin-bottom: 0.5em;
+  }
+
+  .card--vuln .card__section p {
+    margin: 0 0 0.5em 0;
+  }
+
+  .card--vuln .card__meta {
+    padding: 0 0 0 1em;
+    margin: 0;
+    font-size: 1.1em;
+  }
+
+  .card .card__meta__paths {
+    font-size: 0.9em;
+  }
+
+  .card--vuln .card__title {
+    font-size: 28px;
+    margin-top: 0;
+  }
+
+  .card--vuln .card__cta p {
+    margin: 0;
+    text-align: right;
+  }
+
+  </style>
+
+  <div class="layout-stacked__header header">
+
+    <header class="project__header">
+      <div class="layout-container--short">
+        <h1 class="project__header__title" style="margin-bottom: 0.5em;">
+          Snyk test report
+        </h1>
+        <p class="timestamp">June 25th 2018, 11:43:54 am</p>
+        <div class="meta-counts">
+          <div class="meta-count">
+            <span>6</span> <span>known vulnerabilities</span>
+
+          </div>
+          <div class="meta-count"><span>98 vulnerable dependency paths</span></div>
+          <div class="meta-count"><span>1489</span> <span>dependencies</span></div>
+        </div><!-- .meta-counts -->
+      </div><!-- .layout-container--short -->
+    </header><!-- .project__header -->
+
+  </div><!-- .layout-stacked__header -->
+
+  <div class="layout-stacked__content">
+
+    <div class="layout-container--short" style="padding-top: 35px;">
+
+      <div class="cards--vuln filter--patch filter--ignore">
+
+        <div class="card card--vuln  disclosure--not-new severity--high" >
+
+          <h2 class="card__title">Uninitialized Memory Exposure</h2>
+
+          <div class="card__section">
+
+            <div class="label label--high">
+              <span class="label__text">high severity</span>
+            </div>
+
+            <hr/>
+
+            <ul class="card__meta">
+              <li class="card__meta__item">Vulnerable module:
+                base64url
+              </li>
+
+              <li class="card__meta__item">Introduced through:
+
+                  
+
+                  
+                  DependencysMirror@1.0.0, oas-raml-converter@1.1.33 and others
+
+
+                </li>
+
+              </ul>
+
+            <hr/>
+
+            <h3 class="card__section__title">Detailed paths</h3>
+
+            <ul class="card__meta__paths">
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> oas-raml-converter@1.1.33 <span class="list-paths__item__arrow">›</span> raml-1-parser@1.1.43 <span class="list-paths__item__arrow">›</span> base64url@2.0.0</span>
+                </li>
+              </li>
+
+            </ul><!-- .list-paths -->
+
+          </div><!-- .card__section -->
+
+          <hr/>
+
+            <!-- Overview -->
+            <h2 id="overview">Overview</h2>
+<p><a href="https://www.npmjs.com/package/base64url">base64url</a> Converting to, and from, base64url.</p>
+<p>Affected versions of this package are vulnerable to Uninitialized Memory Exposure. An attacker could extract sensitive data from uninitialized memory or may cause a Denial of Service (DoS) by passing in a large number, in setups where typed user input can be passed (e.g. from JSON).</p>
+<h2 id="details">Details</h2>
+<p>The Buffer class on Node.js is a mutable array of binary data, and can be initialized with a string, array or number.</p>
+<pre><code class="lang-js">const buf1 = new Buffer([1,2,3]);
+// creates a buffer containing [01, 02, 03]
+const buf2 = new Buffer(&#39;test&#39;);
+// creates a buffer containing ASCII bytes [74, 65, 73, 74]
+const buf3 = new Buffer(10);
+// creates a buffer of length 10
+</code></pre>
+<p>The first two variants simply create a binary representation of the value it received. The last one, however, pre-allocates a buffer of the specified size, making it a useful buffer, especially when reading data from a stream.
+When using the number constructor of Buffer, it will allocate the memory, but will not fill it with zeros. Instead, the allocated buffer will hold whatever was in memory at the time. If the buffer is not <code>zeroed</code> by using <code>buf.fill(0)</code>, it may leak sensitive information like keys, source code, and system info.</p>
+<h2 id="remediation">Remediation</h2>
+<p>Upgrade <code>base64url</code> to version 3.0.0 or higher.
+<strong>Note</strong> This is vulnerable only for Node &lt;=4</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://hackerone.com/reports/321687">HackerOne Report</a></li>
+<li><a href="https://github.com/brianloveswords/base64url/commit/4355cb294123e86171daa9389f7afe6d2b2b9dae">GitHub Commit</a></li>
+</ul>
+
+
+          <hr/>
+
+          <div class="cta card__cta">
+            <p><a href="https://snyk.io/vuln/npm:base64url:20180511">More about this vulnerability</a></p>
+          </div>
+
+        </div><!-- .card -->
+
+      </div><!-- cards -->
+      <div class="cards--vuln filter--patch filter--ignore">
+
+        <div class="card card--vuln  disclosure--not-new severity--low" >
+
+          <h2 class="card__title">Regular Expression Denial of Service (ReDoS)</h2>
+
+          <div class="card__section">
+
+            <div class="label label--low">
+              <span class="label__text">low severity</span>
+            </div>
+
+            <hr/>
+
+            <ul class="card__meta">
+              <li class="card__meta__item">Vulnerable module:
+                braces
+              </li>
+
+              <li class="card__meta__item">Introduced through:
+
+                  
+
+                  
+                  DependencysMirror@1.0.0, jest@22.4.4 and others
+
+
+                </li>
+
+              </ul>
+
+            <hr/>
+
+            <h3 class="card__section__title">Detailed paths</h3>
+
+            <ul class="card__meta__paths">
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-jsdom@22.4.3 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-node@22.4.3 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> expect@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-jsdom@22.4.3 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-haste-map@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-node@22.4.3 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> expect@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-jsdom@22.4.3 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-node@22.4.3 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> expect@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-jsdom@22.4.3 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-haste-map@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-node@22.4.3 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> expect@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-jsdom@22.4.3 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> expect@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-node@22.4.3 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> expect@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-jsdom@22.4.3 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-haste-map@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-node@22.4.3 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> expect@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-jsdom@22.4.3 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-haste-map@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-node@22.4.3 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> expect@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-jsdom@22.4.3 <span class="list-paths__item__arrow">›</span> jest-util@22.4.3 <span class="list-paths__item__arrow">›</span> jest-message-util@22.4.3 <span class="list-paths__item__arrow">›</span> micromatch@2.3.11 <span class="list-paths__item__arrow">›</span> braces@1.8.5</span>
+                </li>
+              </li>
+
+            </ul><!-- .list-paths -->
+
+          </div><!-- .card__section -->
+
+          <hr/>
+
+            <!-- Overview -->
+            <h2 id="overview">Overview</h2>
+<p><a href="https://www.npmjs.com/package/braces"><code>braces</code></a> is a Bash-like brace expansion, implemented in JavaScript.</p>
+<p>Affected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS) attacks. It used a regular expression (<code>^\{(,+(?:(\{,+\})*),*|,*(?:(\{,+\})*),+)\}</code>) in order to detects empty braces. This can cause an impact of about 10 seconds matching time for data 50K characters long.</p>
+<h2 id="disclosure-timeline">Disclosure Timeline</h2>
+<ul>
+<li>Feb 15th, 2018 - Initial Disclosure to package owner</li>
+<li>Feb 16th, 2018 - Initial Response from package owner</li>
+<li>Feb 18th, 2018 - Fix issued</li>
+<li>Feb 19th, 2018 - Vulnerability published</li>
+</ul>
+<h2 id="details">Details</h2>
+<p>Denial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its original and legitimate users. There are many types of DoS attacks, ranging from trying to clog the network pipes to the system by generating a large volume of traffic from many machines (a Distributed Denial of Service - DDoS - attack) to sending crafted requests that cause a system to crash or take a disproportional amount of time to process.</p>
+<p>The Regular expression Denial of Service (ReDoS) is a type of Denial of Service attack. Regular expressions are incredibly powerful, but they aren&#39;t very intuitive and can ultimately end up making it easy for attackers to take your site down.</p>
+<p>Let’s take the following regular expression as an example:</p>
+<pre><code class="lang-js">regex = /A(B|C+)+D/
+</code></pre>
+<p>This regular expression accomplishes the following:</p>
+<ul>
+<li><code>A</code> The string must start with the letter &#39;A&#39;</li>
+<li><code>(B|C+)+</code> The string must then follow the letter A with either the letter &#39;B&#39; or some number of occurrences of the letter &#39;C&#39; (the <code>+</code> matches one or more times). The <code>+</code> at the end of this section states that we can look for one or more matches of this section.</li>
+<li><code>D</code> Finally, we ensure this section of the string ends with a &#39;D&#39;</li>
+</ul>
+<p>The expression would match inputs such as <code>ABBD</code>, <code>ABCCCCD</code>, <code>ABCBCCCD</code> and <code>ACCCCCD</code></p>
+<p>It most cases, it doesn&#39;t take very long for a regex engine to find a match:</p>
+<pre><code class="lang-bash">$ time node -e &#39;/A(B|C+)+D/.test(&quot;ACCCCCCCCCCCCCCCCCCCCCCCCCCCCD&quot;)&#39;
+0.04s user 0.01s system 95% cpu 0.052 total
+
+$ time node -e &#39;/A(B|C+)+D/.test(&quot;ACCCCCCCCCCCCCCCCCCCCCCCCCCCCX&quot;)&#39;
+1.79s user 0.02s system 99% cpu 1.812 total
+</code></pre>
+<p>The entire process of testing it against a 30 characters long string takes around ~52ms. But when given an invalid string, it takes nearly two seconds to complete the test, over ten times as long as it took to test a valid string. The dramatic difference is due to the way regular expressions get evaluated.</p>
+<p>Most Regex engines will work very similarly (with minor differences). The engine will match the first possible way to accept the current character and proceed to the next one. If it then fails to match the next one, it will backtrack and see if there was another way to digest the previous character. If it goes too far down the rabbit hole only to find out the string doesn’t match in the end, and if many characters have multiple valid regex paths, the number of backtracking steps can become very large, resulting in what is known as <em>catastrophic backtracking</em>.</p>
+<p>Let&#39;s look at how our expression runs into this problem, using a shorter string: &quot;ACCCX&quot;. While it seems fairly straightforward, there are still four different ways that the engine could match those three C&#39;s:</p>
+<ol>
+<li>CCC</li>
+<li>CC+C</li>
+<li>C+CC</li>
+<li>C+C+C.</li>
+</ol>
+<p>The engine has to try each of those combinations to see if any of them potentially match against the expression. When you combine that with the other steps the engine must take, we can use <a href="https://regex101.com/debugger">RegEx 101 debugger</a> to see the engine has to take a total of 38 steps before it can determine the string doesn&#39;t match.</p>
+<p>From there, the number of steps the engine must use to validate a string just continues to grow.</p>
+<table>
+<thead>
+<tr>
+<th>String</th>
+<th style="text-align:right">Number of C&#39;s</th>
+<th style="text-align:right">Number of steps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACCCX</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">38</td>
+</tr>
+<tr>
+<td>ACCCCX</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">71</td>
+</tr>
+<tr>
+<td>ACCCCCX</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">136</td>
+</tr>
+<tr>
+<td>ACCCCCCCCCCCCCCX</td>
+<td style="text-align:right">14</td>
+<td style="text-align:right">65,553</td>
+</tr>
+</tbody>
+</table>
+<p>By the time the string includes 14 C&#39;s, the engine has to take over 65,000 steps just to see if the string is valid. These extreme situations can cause them to work very slowly (exponentially related to input size, as shown above), allowing an attacker to exploit this and can cause the service to excessively consume CPU, resulting in a Denial of Service.</p>
+<h2 id="remediation">Remediation</h2>
+<p>Upgrade <code>braces</code> to version 2.3.1 or higher.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://github.com/micromatch/braces/commit/abdafb0cae1e0c00f184abbadc692f4eaa98f451">GitHub Commit</a></li>
+</ul>
+
+
+          <hr/>
+
+          <div class="cta card__cta">
+            <p><a href="https://snyk.io/vuln/npm:braces:20180219">More about this vulnerability</a></p>
+          </div>
+
+        </div><!-- .card -->
+
+      </div><!-- cards -->
+      <div class="cards--vuln filter--patch filter--ignore">
+
+        <div class="card card--vuln  disclosure--not-new severity--medium" >
+
+          <h2 class="card__title">Regular Expression Denial of Service (ReDoS)</h2>
+
+          <div class="card__section">
+
+            <div class="label label--medium">
+              <span class="label__text">medium severity</span>
+            </div>
+
+            <hr/>
+
+            <ul class="card__meta">
+              <li class="card__meta__item">Vulnerable module:
+                content-type-parser
+              </li>
+
+              <li class="card__meta__item">Introduced through:
+
+                  
+
+                  
+                  DependencysMirror@1.0.0, jest@22.4.4 and others
+
+
+                </li>
+
+              </ul>
+
+            <hr/>
+
+            <h3 class="card__section__title">Detailed paths</h3>
+
+            <ul class="card__meta__paths">
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-jsdom@22.4.3 <span class="list-paths__item__arrow">›</span> jsdom@11.5.1 <span class="list-paths__item__arrow">›</span> content-type-parser@1.0.2</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-jsdom@22.4.3 <span class="list-paths__item__arrow">›</span> jsdom@11.5.1 <span class="list-paths__item__arrow">›</span> content-type-parser@1.0.2</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-jsdom@22.4.3 <span class="list-paths__item__arrow">›</span> jsdom@11.5.1 <span class="list-paths__item__arrow">›</span> content-type-parser@1.0.2</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-jsdom@22.4.3 <span class="list-paths__item__arrow">›</span> jsdom@11.5.1 <span class="list-paths__item__arrow">›</span> content-type-parser@1.0.2</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-jsdom@22.4.3 <span class="list-paths__item__arrow">›</span> jsdom@11.5.1 <span class="list-paths__item__arrow">›</span> content-type-parser@1.0.2</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-jsdom@22.4.3 <span class="list-paths__item__arrow">›</span> jsdom@11.5.1 <span class="list-paths__item__arrow">›</span> content-type-parser@1.0.2</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-jsdom@22.4.3 <span class="list-paths__item__arrow">›</span> jsdom@11.5.1 <span class="list-paths__item__arrow">›</span> content-type-parser@1.0.2</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-environment-jsdom@22.4.3 <span class="list-paths__item__arrow">›</span> jsdom@11.5.1 <span class="list-paths__item__arrow">›</span> content-type-parser@1.0.2</span>
+                </li>
+              </li>
+
+            </ul><!-- .list-paths -->
+
+          </div><!-- .card__section -->
+
+          <hr/>
+
+            <!-- Overview -->
+            <h2 id="overview">Overview</h2>
+<p><a href="https://www.npmjs.com/package/content-type-parser"><code>content-type-parser</code></a> parses the Content-Type header field into an introspectable data structure.</p>
+<p>Affected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS) via the user agent parser. It used a regular expression (<code>/^(.*?)\/(.*?)([\t ]*;.*)?$/</code>) in order to parse user agents. This can cause a very moderate impact of about 4 seconds matching time for data 30k characters long.</p>
+<h2 id="details">Details</h2>
+<p>Denial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its original and legitimate users. There are many types of DoS attacks, ranging from trying to clog the network pipes to the system by generating a large volume of traffic from many machines (a Distributed Denial of Service - DDoS - attack) to sending crafted requests that cause a system to crash or take a disproportional amount of time to process.</p>
+<p>The Regular expression Denial of Service (ReDoS) is a type of Denial of Service attack. Regular expressions are incredibly powerful, but they aren&#39;t very intuitive and can ultimately end up making it easy for attackers to take your site down.</p>
+<p>Let’s take the following regular expression as an example:</p>
+<pre><code class="lang-js">regex = /A(B|C+)+D/
+</code></pre>
+<p>This regular expression accomplishes the following:</p>
+<ul>
+<li><code>A</code> The string must start with the letter &#39;A&#39;</li>
+<li><code>(B|C+)+</code> The string must then follow the letter A with either the letter &#39;B&#39; or some number of occurrences of the letter &#39;C&#39; (the <code>+</code> matches one or more times). The <code>+</code> at the end of this section states that we can look for one or more matches of this section.</li>
+<li><code>D</code> Finally, we ensure this section of the string ends with a &#39;D&#39;</li>
+</ul>
+<p>The expression would match inputs such as <code>ABBD</code>, <code>ABCCCCD</code>, <code>ABCBCCCD</code> and <code>ACCCCCD</code></p>
+<p>It most cases, it doesn&#39;t take very long for a regex engine to find a match:</p>
+<pre><code class="lang-bash">$ time node -e &#39;/A(B|C+)+D/.test(&quot;ACCCCCCCCCCCCCCCCCCCCCCCCCCCCD&quot;)&#39;
+0.04s user 0.01s system 95% cpu 0.052 total
+
+$ time node -e &#39;/A(B|C+)+D/.test(&quot;ACCCCCCCCCCCCCCCCCCCCCCCCCCCCX&quot;)&#39;
+1.79s user 0.02s system 99% cpu 1.812 total
+</code></pre>
+<p>The entire process of testing it against a 30 characters long string takes around ~52ms. But when given an invalid string, it takes nearly two seconds to complete the test, over ten times as long as it took to test a valid string. The dramatic difference is due to the way regular expressions get evaluated.</p>
+<p>Most Regex engines will work very similarly (with minor differences). The engine will match the first possible way to accept the current character and proceed to the next one. If it then fails to match the next one, it will backtrack and see if there was another way to digest the previous character. If it goes too far down the rabbit hole only to find out the string doesn’t match in the end, and if many characters have multiple valid regex paths, the number of backtracking steps can become very large, resulting in what is known as <em>catastrophic backtracking</em>.</p>
+<p>Let&#39;s look at how our expression runs into this problem, using a shorter string: &quot;ACCCX&quot;. While it seems fairly straightforward, there are still four different ways that the engine could match those three C&#39;s:</p>
+<ol>
+<li>CCC</li>
+<li>CC+C</li>
+<li>C+CC</li>
+<li>C+C+C.</li>
+</ol>
+<p>The engine has to try each of those combinations to see if any of them potentially match against the expression. When you combine that with the other steps the engine must take, we can use <a href="https://regex101.com/debugger">RegEx 101 debugger</a> to see the engine has to take a total of 38 steps before it can determine the string doesn&#39;t match.</p>
+<p>From there, the number of steps the engine must use to validate a string just continues to grow.</p>
+<table>
+<thead>
+<tr>
+<th>String</th>
+<th style="text-align:right">Number of C&#39;s</th>
+<th style="text-align:right">Number of steps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACCCX</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">38</td>
+</tr>
+<tr>
+<td>ACCCCX</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">71</td>
+</tr>
+<tr>
+<td>ACCCCCX</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">136</td>
+</tr>
+<tr>
+<td>ACCCCCCCCCCCCCCX</td>
+<td style="text-align:right">14</td>
+<td style="text-align:right">65,553</td>
+</tr>
+</tbody>
+</table>
+<p>By the time the string includes 14 C&#39;s, the engine has to take over 65,000 steps just to see if the string is valid. These extreme situations can cause them to work very slowly (exponentially related to input size, as shown above), allowing an attacker to exploit this and can cause the service to excessively consume CPU, resulting in a Denial of Service.</p>
+<h2 id="remediation">Remediation</h2>
+<p>There is no fix for <code>content-type-parser</code>. The package was renamed from <code>content-type-parser</code> to <code>whatwg-mimetype</code>, which fixes the issue in version 2.0.0.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://github.com/jsdom/whatwg-mimetype/issues/3">GitHub Issue</a></li>
+<li><a href="https://github.com/jsdom/whatwg-mimetype/commit/26c539a699778f8743b8319c298b5fb28a4328d0">GitHub Commit</a></li>
+</ul>
+
+
+          <hr/>
+
+          <div class="cta card__cta">
+            <p><a href="https://snyk.io/vuln/npm:content-type-parser:20170905">More about this vulnerability</a></p>
+          </div>
+
+        </div><!-- .card -->
+
+      </div><!-- cards -->
+      <div class="cards--vuln filter--patch filter--ignore">
+
+        <div class="card card--vuln  disclosure--not-new severity--low" >
+
+          <h2 class="card__title">Regular Expression Denial of Service (ReDoS)</h2>
+
+          <div class="card__section">
+
+            <div class="label label--low">
+              <span class="label__text">low severity</span>
+            </div>
+
+            <hr/>
+
+            <ul class="card__meta">
+              <li class="card__meta__item">Vulnerable module:
+                diff
+              </li>
+
+              <li class="card__meta__item">Introduced through:
+
+                  
+
+                  
+                  DependencysMirror@1.0.0, jest@22.4.4 and others
+
+
+                </li>
+
+              </ul>
+
+            <hr/>
+
+            <h3 class="card__section__title">Detailed paths</h3>
+
+            <ul class="card__meta__paths">
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-snapshot@22.4.3 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-snapshot@22.4.3 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> expect@22.4.3 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-snapshot@22.4.3 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> expect@22.4.3 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-snapshot@22.4.3 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> expect@22.4.3 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-snapshot@22.4.3 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> expect@22.4.3 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-snapshot@22.4.3 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> expect@22.4.3 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-snapshot@22.4.3 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> expect@22.4.3 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-snapshot@22.4.3 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> expect@22.4.3 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> jest-snapshot@22.4.3 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> jest@22.4.4 <span class="list-paths__item__arrow">›</span> jest-cli@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runner@22.4.4 <span class="list-paths__item__arrow">›</span> jest-runtime@22.4.4 <span class="list-paths__item__arrow">›</span> jest-validate@22.4.4 <span class="list-paths__item__arrow">›</span> jest-config@22.4.4 <span class="list-paths__item__arrow">›</span> jest-jasmine2@22.4.4 <span class="list-paths__item__arrow">›</span> expect@22.4.3 <span class="list-paths__item__arrow">›</span> jest-diff@22.4.3 <span class="list-paths__item__arrow">›</span> diff@3.4.0</span>
+                </li>
+              </li>
+
+            </ul><!-- .list-paths -->
+
+          </div><!-- .card__section -->
+
+          <hr/>
+
+            <!-- Overview -->
+            <h2 id="overview">Overview</h2>
+<p><a href="https://www.npmjs.com/package/diff"><code>diff</code></a> is a javascript text differencing implementation.</p>
+<p>Affected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS) attacks. This can cause an impact of about 10 seconds matching time for data 48K characters long.</p>
+<h2 id="disclosure-timeline">Disclosure Timeline</h2>
+<ul>
+<li>Feb 15th, 2018 - Initial Disclosure to package owner</li>
+<li>Feb 16th, 2018 - Initial Response from package owner</li>
+<li>Mar 5th, 2018 - Fix issued</li>
+<li>Mar 6th, 2018 - Vulnerability published</li>
+</ul>
+<h2 id="details">Details</h2>
+<p>Denial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its original and legitimate users. There are many types of DoS attacks, ranging from trying to clog the network pipes to the system by generating a large volume of traffic from many machines (a Distributed Denial of Service - DDoS - attack) to sending crafted requests that cause a system to crash or take a disproportional amount of time to process.</p>
+<p>The Regular expression Denial of Service (ReDoS) is a type of Denial of Service attack. Regular expressions are incredibly powerful, but they aren&#39;t very intuitive and can ultimately end up making it easy for attackers to take your site down.</p>
+<p>Let’s take the following regular expression as an example:</p>
+<pre><code class="lang-js">regex = /A(B|C+)+D/
+</code></pre>
+<p>This regular expression accomplishes the following:</p>
+<ul>
+<li><code>A</code> The string must start with the letter &#39;A&#39;</li>
+<li><code>(B|C+)+</code> The string must then follow the letter A with either the letter &#39;B&#39; or some number of occurrences of the letter &#39;C&#39; (the <code>+</code> matches one or more times). The <code>+</code> at the end of this section states that we can look for one or more matches of this section.</li>
+<li><code>D</code> Finally, we ensure this section of the string ends with a &#39;D&#39;</li>
+</ul>
+<p>The expression would match inputs such as <code>ABBD</code>, <code>ABCCCCD</code>, <code>ABCBCCCD</code> and <code>ACCCCCD</code></p>
+<p>It most cases, it doesn&#39;t take very long for a regex engine to find a match:</p>
+<pre><code class="lang-bash">$ time node -e &#39;/A(B|C+)+D/.test(&quot;ACCCCCCCCCCCCCCCCCCCCCCCCCCCCD&quot;)&#39;
+0.04s user 0.01s system 95% cpu 0.052 total
+
+$ time node -e &#39;/A(B|C+)+D/.test(&quot;ACCCCCCCCCCCCCCCCCCCCCCCCCCCCX&quot;)&#39;
+1.79s user 0.02s system 99% cpu 1.812 total
+</code></pre>
+<p>The entire process of testing it against a 30 characters long string takes around ~52ms. But when given an invalid string, it takes nearly two seconds to complete the test, over ten times as long as it took to test a valid string. The dramatic difference is due to the way regular expressions get evaluated.</p>
+<p>Most Regex engines will work very similarly (with minor differences). The engine will match the first possible way to accept the current character and proceed to the next one. If it then fails to match the next one, it will backtrack and see if there was another way to digest the previous character. If it goes too far down the rabbit hole only to find out the string doesn’t match in the end, and if many characters have multiple valid regex paths, the number of backtracking steps can become very large, resulting in what is known as <em>catastrophic backtracking</em>.</p>
+<p>Let&#39;s look at how our expression runs into this problem, using a shorter string: &quot;ACCCX&quot;. While it seems fairly straightforward, there are still four different ways that the engine could match those three C&#39;s:</p>
+<ol>
+<li>CCC</li>
+<li>CC+C</li>
+<li>C+CC</li>
+<li>C+C+C.</li>
+</ol>
+<p>The engine has to try each of those combinations to see if any of them potentially match against the expression. When you combine that with the other steps the engine must take, we can use <a href="https://regex101.com/debugger">RegEx 101 debugger</a> to see the engine has to take a total of 38 steps before it can determine the string doesn&#39;t match.</p>
+<p>From there, the number of steps the engine must use to validate a string just continues to grow.</p>
+<table>
+<thead>
+<tr>
+<th>String</th>
+<th style="text-align:right">Number of C&#39;s</th>
+<th style="text-align:right">Number of steps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACCCX</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">38</td>
+</tr>
+<tr>
+<td>ACCCCX</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">71</td>
+</tr>
+<tr>
+<td>ACCCCCX</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">136</td>
+</tr>
+<tr>
+<td>ACCCCCCCCCCCCCCX</td>
+<td style="text-align:right">14</td>
+<td style="text-align:right">65,553</td>
+</tr>
+</tbody>
+</table>
+<p>By the time the string includes 14 C&#39;s, the engine has to take over 65,000 steps just to see if the string is valid. These extreme situations can cause them to work very slowly (exponentially related to input size, as shown above), allowing an attacker to exploit this and can cause the service to excessively consume CPU, resulting in a Denial of Service.</p>
+<h2 id="remediation">Remediation</h2>
+<p>Upgrade <code>diff</code> to version 3.5.0 or higher.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://github.com/kpdecker/jsdiff/commit/2aec4298639bf30fb88a00b356bf404d3551b8c0">GitHub Commit</a></li>
+</ul>
+
+
+          <hr/>
+
+          <div class="cta card__cta">
+            <p><a href="https://snyk.io/vuln/npm:diff:20180305">More about this vulnerability</a></p>
+          </div>
+
+        </div><!-- .card -->
+
+      </div><!-- cards -->
+      <div class="cards--vuln filter--patch filter--ignore">
+
+        <div class="card card--vuln  disclosure--not-new severity--high" >
+
+          <h2 class="card__title">Command Injection</h2>
+
+          <div class="card__section">
+
+            <div class="label label--high">
+              <span class="label__text">high severity</span>
+            </div>
+
+            <hr/>
+
+            <ul class="card__meta">
+              <li class="card__meta__item">Vulnerable module:
+                shelljs
+              </li>
+
+              <li class="card__meta__item">Introduced through:
+
+                  
+
+                  
+                  DependencysMirror@1.0.0, @storybook/react@3.4.8 and others
+
+
+                </li>
+
+              </ul>
+
+            <hr/>
+
+            <h3 class="card__section__title">Detailed paths</h3>
+
+            <ul class="card__meta__paths">
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> @storybook/react@3.4.8 <span class="list-paths__item__arrow">›</span> @storybook/core@3.4.8 <span class="list-paths__item__arrow">›</span> shelljs@0.8.2</span>
+                </li>
+              </li>
+
+            </ul><!-- .list-paths -->
+
+          </div><!-- .card__section -->
+
+          <hr/>
+
+            <!-- Overview -->
+            <h2 id="overview">Overview</h2>
+<p><a href="https://www.npmjs.com/package/shelljs"><code>shelljs</code></a> is a portable Unix shell commands for Node.js.</p>
+<p>Affected version of this package are vulnerable to Command Injection. It is possible to invoke commands from <code>shell.exec()</code> from external sources, allowing an attacker to inject arbitrary commands.  </p>
+<h2 id="remediation">Remediation</h2>
+<p>There is no fix version for <code>shelljs</code>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://github.com/shelljs/shelljs/issues/143">GitHub Issue #1</a></li>
+<li><a href="https://github.com/shelljs/shelljs/issues/495">GitHub Issue #2</a></li>
+<li><a href="https://github.com/shelljs/shelljs/pull/524">GitHub PR</a></li>
+</ul>
+
+
+          <hr/>
+
+          <div class="cta card__cta">
+            <p><a href="https://snyk.io/vuln/npm:shelljs:20140723">More about this vulnerability</a></p>
+          </div>
+
+        </div><!-- .card -->
+
+      </div><!-- cards -->
+      <div class="cards--vuln filter--patch filter--ignore">
+
+        <div class="card card--vuln  disclosure--not-new severity--low" >
+
+          <h2 class="card__title">Regular Expression Denial of Service (ReDoS)</h2>
+
+          <div class="card__section">
+
+            <div class="label label--low">
+              <span class="label__text">low severity</span>
+            </div>
+
+            <hr/>
+
+            <ul class="card__meta">
+              <li class="card__meta__item">Vulnerable module:
+                validator
+              </li>
+
+              <li class="card__meta__item">Introduced through:
+
+                  
+
+                  
+                  DependencysMirror@1.0.0, oas-raml-converter@1.1.33 and others
+
+
+                </li>
+
+              </ul>
+
+            <hr/>
+
+            <h3 class="card__section__title">Detailed paths</h3>
+
+            <ul class="card__meta__paths">
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> oas-raml-converter@1.1.33 <span class="list-paths__item__arrow">›</span> swagger-parser@4.0.0-beta.2 <span class="list-paths__item__arrow">›</span> z-schema@3.18.4 <span class="list-paths__item__arrow">›</span> validator@8.2.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> oas-raml-converter@1.1.33 <span class="list-paths__item__arrow">›</span> swagger-parser@4.0.0-beta.2 <span class="list-paths__item__arrow">›</span> json-schema-ref-parser@3.3.1 <span class="list-paths__item__arrow">›</span> z-schema@3.18.4 <span class="list-paths__item__arrow">›</span> validator@8.2.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> oas-raml-converter@1.1.33 <span class="list-paths__item__arrow">›</span> raml-1-parser@1.1.43 <span class="list-paths__item__arrow">›</span> z-schema@3.18.4 <span class="list-paths__item__arrow">›</span> validator@8.2.0</span>
+                </li>
+              </li>
+              <li>
+                <span class="list-paths__item__introduced"><em>Introduced through</em>: DependencysMirror@1.0.0 <span class="list-paths__item__arrow">›</span> oas-raml-converter@1.1.33 <span class="list-paths__item__arrow">›</span> raml-1-parser@1.1.43 <span class="list-paths__item__arrow">›</span> raml-definition-system@0.0.81 <span class="list-paths__item__arrow">›</span> raml-typesystem@0.0.86 <span class="list-paths__item__arrow">›</span> raml-json-validation@0.0.16 <span class="list-paths__item__arrow">›</span> z-schema@3.18.4 <span class="list-paths__item__arrow">›</span> validator@8.2.0</span>
+                </li>
+              </li>
+
+            </ul><!-- .list-paths -->
+
+          </div><!-- .card__section -->
+
+          <hr/>
+
+            <!-- Overview -->
+            <h2 id="overview">Overview</h2>
+<p><a href="https://www.npmjs.com/package/validator"><code>validator</code></a> is a library of string validators and sanitizers.</p>
+<p>Affected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS) attacks. It used a regular expression (<code>^\s*data:([a-z]+\/[a-z0-9\-\+]+(;[a-z\-]+=[a-z0-9\-]+)?)?(;base64)?,[a-z0-9!\$&amp;&#39;,\(\)\*\+,;=\-\._~:@\/\?%\s]*\s*$</code>) in order to validate Data URIs. This can cause an impact of about 10 seconds matching time for data 70K characters long.</p>
+<h2 id="disclosure-timeline">Disclosure Timeline</h2>
+<ul>
+<li>Feb 15th, 2018 - Initial Disclosure to package owner</li>
+<li>Feb 16th, 2018 - Initial Response from package owner</li>
+<li>Feb 18th, 2018 - Fix issued</li>
+<li>Feb 18th, 2018 - Vulnerability published</li>
+</ul>
+<h2 id="details">Details</h2>
+<p>Denial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its original and legitimate users. There are many types of DoS attacks, ranging from trying to clog the network pipes to the system by generating a large volume of traffic from many machines (a Distributed Denial of Service - DDoS - attack) to sending crafted requests that cause a system to crash or take a disproportional amount of time to process.</p>
+<p>The Regular expression Denial of Service (ReDoS) is a type of Denial of Service attack. Regular expressions are incredibly powerful, but they aren&#39;t very intuitive and can ultimately end up making it easy for attackers to take your site down.</p>
+<p>Let’s take the following regular expression as an example:</p>
+<pre><code class="lang-js">regex = /A(B|C+)+D/
+</code></pre>
+<p>This regular expression accomplishes the following:</p>
+<ul>
+<li><code>A</code> The string must start with the letter &#39;A&#39;</li>
+<li><code>(B|C+)+</code> The string must then follow the letter A with either the letter &#39;B&#39; or some number of occurrences of the letter &#39;C&#39; (the <code>+</code> matches one or more times). The <code>+</code> at the end of this section states that we can look for one or more matches of this section.</li>
+<li><code>D</code> Finally, we ensure this section of the string ends with a &#39;D&#39;</li>
+</ul>
+<p>The expression would match inputs such as <code>ABBD</code>, <code>ABCCCCD</code>, <code>ABCBCCCD</code> and <code>ACCCCCD</code></p>
+<p>It most cases, it doesn&#39;t take very long for a regex engine to find a match:</p>
+<pre><code class="lang-bash">$ time node -e &#39;/A(B|C+)+D/.test(&quot;ACCCCCCCCCCCCCCCCCCCCCCCCCCCCD&quot;)&#39;
+0.04s user 0.01s system 95% cpu 0.052 total
+
+$ time node -e &#39;/A(B|C+)+D/.test(&quot;ACCCCCCCCCCCCCCCCCCCCCCCCCCCCX&quot;)&#39;
+1.79s user 0.02s system 99% cpu 1.812 total
+</code></pre>
+<p>The entire process of testing it against a 30 characters long string takes around ~52ms. But when given an invalid string, it takes nearly two seconds to complete the test, over ten times as long as it took to test a valid string. The dramatic difference is due to the way regular expressions get evaluated.</p>
+<p>Most Regex engines will work very similarly (with minor differences). The engine will match the first possible way to accept the current character and proceed to the next one. If it then fails to match the next one, it will backtrack and see if there was another way to digest the previous character. If it goes too far down the rabbit hole only to find out the string doesn’t match in the end, and if many characters have multiple valid regex paths, the number of backtracking steps can become very large, resulting in what is known as <em>catastrophic backtracking</em>.</p>
+<p>Let&#39;s look at how our expression runs into this problem, using a shorter string: &quot;ACCCX&quot;. While it seems fairly straightforward, there are still four different ways that the engine could match those three C&#39;s:</p>
+<ol>
+<li>CCC</li>
+<li>CC+C</li>
+<li>C+CC</li>
+<li>C+C+C.</li>
+</ol>
+<p>The engine has to try each of those combinations to see if any of them potentially match against the expression. When you combine that with the other steps the engine must take, we can use <a href="https://regex101.com/debugger">RegEx 101 debugger</a> to see the engine has to take a total of 38 steps before it can determine the string doesn&#39;t match.</p>
+<p>From there, the number of steps the engine must use to validate a string just continues to grow.</p>
+<table>
+<thead>
+<tr>
+<th>String</th>
+<th style="text-align:right">Number of C&#39;s</th>
+<th style="text-align:right">Number of steps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACCCX</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">38</td>
+</tr>
+<tr>
+<td>ACCCCX</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">71</td>
+</tr>
+<tr>
+<td>ACCCCCX</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">136</td>
+</tr>
+<tr>
+<td>ACCCCCCCCCCCCCCX</td>
+<td style="text-align:right">14</td>
+<td style="text-align:right">65,553</td>
+</tr>
+</tbody>
+</table>
+<p>By the time the string includes 14 C&#39;s, the engine has to take over 65,000 steps just to see if the string is valid. These extreme situations can cause them to work very slowly (exponentially related to input size, as shown above), allowing an attacker to exploit this and can cause the service to excessively consume CPU, resulting in a Denial of Service.</p>
+<h2 id="remediation">Remediation</h2>
+<p>Upgrade <code>validator</code> to version 9.4.1 or higher.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://github.com/chriso/validator.js/commit/19508354cde4e08c75b377321a3d5f910dddee4e">GitHub Commit</a></li>
+<li><a href="https://github.com/chriso/validator.js/blob/master/CHANGELOG.md#941">GitHub Changelog</a></li>
+</ul>
+
+
+          <hr/>
+
+          <div class="cta card__cta">
+            <p><a href="https://snyk.io/vuln/npm:validator:20180218">More about this vulnerability</a></p>
+          </div>
+
+        </div><!-- .card -->
+
+      </div><!-- cards -->
+
+    </div>
+
+  </div><!-- .layout-container -->
+
+</main><!-- .layout-stacked__content -->
+
+</body>
+</html>
