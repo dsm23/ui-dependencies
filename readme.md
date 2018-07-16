@@ -35,10 +35,15 @@ Load the contents of a json file following the structure:
 
 ## Workflow for getting npm modules in to the secure environment
 
-### 1. Adding new dependencies
-The first step is to add any new dependencies to the `./merged/package.json` (and associated lock) of the ui-dependencies project:
+### Prerequisites 
 
-- run `copy-dependencies ./webapp ./ui-dependencies/merged`
+- Clone this repository and run `npm install`.
+- Ensure that `snyk` and `snyk-to-html` are installed globally on your machine.
+- Ensure you access to create folders on https://ibm.ent.box.com/folder/40373591140 by requesting access from the Platform Team in slack.
+
+### 1. Adding new dependencies
+
+- add new dependencies to the `./merged/package.json`
 - run `npm install` inside `./ui-dependencies/merged`
 
 If you are not ready to raise a request at this point, you can open a pull request for the `merged/package.json` and `merged/package-lock.json` so that these packages are picked up by the next request.
@@ -50,22 +55,26 @@ If you are not ready to raise a request at this point, you can open a pull reque
 - If you want to update packages ignoring semver, you can use the npm module `npm-check-updates`
 - Dependencies that have been copied across from another package should also be updated in the original package, or updated before copying across.
 
-### 2. Creating a request
+### 2. Creating the files required to make a request
 
 Once there have been updates to `merged/package.json` and/or `merged/package-lock.json`, you can create a new request folder by:
 
-- ensuring `npm install && npm prune` has been done in the `merged` folder if not already done in previous step
-- esnure that `snyk` and `snyk-to-html` are installed globally on your machine.
-- run `npm run request` from the root of the ui-depencencies project
-  - alternatively, for a minimal request, run `npm run minimal`, or for a minimal request with any modules that introduce vulnerabilities removed, run `npm run no-vulnerabilities`.
-  - another option, if you want to only import specific modules, is to do the following:
-    - `npm run request:new`
-    - manually edit requests/latest/package.json and remove any modules you don't want to include in your import
-    - `npm run request:test`
-    - `npm run request:request`
-    - `npm run request:download`
+**a)** running `npm run request` from the root of the ui-depencencies project
 
-After running this, follow these steps:
+or
+
+**b)** for a minimal request, run `npm run minimal`, or for a minimal request without any modules that introduce vulnerabilities, run `npm run no-vulnerabilities`.
+
+or (especially if you are hitting 413 errors from snyk)
+
+**c)** if you want to only import specific modules, do the following:
+  - `npm run request:new`
+  - manually edit requests/latest/package.json and remove any modules you don't want to include in your import
+  - `npm run request:test`
+  - `npm run request:request`
+  - `npm run request:download`
+
+### 3. Creating the request
 
 1. Review the `requests/yyyymmddhhmmss/requested.json` file to check it is what you are expecting.
 2. Create a Jira ticket in the secure environment with the following details and note the ticket number
@@ -79,7 +88,8 @@ After running this, follow these steps:
   - File Current Location: Box - NLEDS Third Party Software Drop
   - Import File Target Location: Artifactory - third-party-npms
   - Description: Please unpackage packages.tgz before importing using tar/gzip (available in Git Bash in the dev VMs)
-3. Create a directory called `SYS-XXX` (where XXX is the Jira ticket number) in Box at https://ibm.ent.box.com/folder/40373591140, access to this can be granted by Daniel Stevenson or a member of the platform team.
+  - Description: Also append information as to why the requested dependencies are required in the secure environment
+3. Create a directory called `SYS-XXX` (where XXX is the Jira ticket number) in Box at https://ibm.ent.box.com/folder/40373591140.
 4. Upload `requests/yyyymmddhhmmss/packages.tgz` to this folder.
 5. Raise a PR to add `requests/yyyymmddhhmmss/packages.json` in to master.
 6. Send `snyk-complete.html` to the support team via CJSM. If you don't have access to CJSM, you can email an encrypted version of these files to someone that does (e.g. Pete Lockey) using the standard passphrase (again, ask someone e.g. Pete Lockey if you don't know this).
@@ -110,6 +120,6 @@ What follows is a complete run-down of all the vulnerabilities being reported:
 
 
 
-### 3. Approval
+### 4. Approval
 
 Once the packages are approved, run `npm run approve requests/yyyymmddhhmmss` and raise a PR to merge the updated `approved.json` to master.
