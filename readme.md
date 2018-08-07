@@ -44,7 +44,7 @@ Load the contents of a json file following the structure:
 ### 1. Adding new dependencies
 
 - add new dependencies to the `./merged/package.json`
-- run `npm install` inside `./ui-dependencies/merged`
+- run `npm install` inside `./merged`
 
 If you are not ready to raise a request at this point, you can open a pull request for the `merged/package.json` and `merged/package-lock.json` so that these packages are picked up by the next request.
 
