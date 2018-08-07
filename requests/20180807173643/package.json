@@ -1,0 +1,27 @@
+{
+  "name": "DependencysMirror",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "index.js",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.digital.homeoffice.gov.uk/john-paul.harold/dependency-mirror"
+  },
+  "scripts": {},
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-3"
+    ]
+  },
+  "author": "IBM",
+  "license": "MIT",
+  "dependencies": {
+    "@material-ui/icons": "^2.0.1",
+    "govuk-react": "^0.2.10",
+    "govuk-frederic": "^0.0.4"
+  }
+}
