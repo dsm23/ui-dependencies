@@ -100,7 +100,7 @@ or (especially if you are hitting 413 errors from snyk)
 
 Hi,
 
-Please could you forward this via CJSM to Joe Hardy and James Goodwin.
+Please could you forward this via CJSM to Joe Hardy, James Goodwin and Dominic Simpson.
 
 Thanks
 
@@ -122,4 +122,4 @@ What follows is a complete run-down of all the vulnerabilities being reported:
 
 ### 4. Approval
 
-Once the packages are approved, run `npm run approve requests/yyyymmddhhmmss` and raise a PR to merge the updated `approved.json` to master.
+Once the packages are approved, run `npm run approve requests/yyyymmddhhmmss` and raise a PR to merge the updated `approved.json` and `merged/package.json` to master.
