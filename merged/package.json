@@ -37,7 +37,7 @@
     "final-form-set-field-touched": "^1.0.0",
     "govuk-elements-sass": "^3.1.2",
     "govuk-react": "^0.2.11",
-    "govuk-frederic": "^0.0.5",
+    "govuk-frederic": "^0.1.0",
     "jest-emotion": "^9.2.4",
     "json2yaml": "^1.1.0",
     "luxon": "^1.2.0",
