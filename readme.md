@@ -35,7 +35,7 @@ Load the contents of a json file following the structure:
 
 ## Workflow for getting npm modules in to the secure environment
 
-### Prerequisites 
+### Prerequisites
 
 - Clone this repository and run `npm install`.
 - Ensure that `snyk` and `snyk-to-html` are installed globally on your machine.
@@ -52,7 +52,7 @@ If you are not ready to raise a request at this point, you can open a pull reque
 
 - Run `npm update` inside `./ui-dependencies/merged` in order to get the latest version of all dependencies respecting semver, this will help ensure we don't get resolved Snyk vulnerabilities in the report.
 - `npm update` doesn't update sub dependency versions that are locked by package-lock, or present in node_modules. To prevent Snyk from complaining about issues that can be resolved via a semver update, delete the node_modules folder and package-lock from `./ui-dependencies/merged` and run `npm install` again.
-- If you want to update packages ignoring semver, you can use the npm module `npm-check-updates`
+- If you want to update packages ignoring semver, you can use the npm module `npm-check-updates` (from merged folder: `npm i npm-check-updates && ncu -u`)
 - Dependencies that have been copied across from another package should also be updated in the original package, or updated before copying across.
 
 ### 2. Creating the files required to make a request
