@@ -47,6 +47,7 @@
     "luxon": "^1.2.0",
     "manage-state": "0.0.3",
     "moment": "^2.22.2",
+    "npm-check-updates": "^2.14.2",
     "nwb": "^0.23.0",
     "oas-raml-converter": "^1.1.32",
     "openapi-mock": "0.0.8",
