@@ -1,3 +1,27 @@
+---
+Added 17 September 2018
+
+Time of Check Time of Use (TOCTOU) - MEDIUM SEVERITY - Vulnerable module: chownr
+
+chownr is a deep sub dependency of react-scripts, react-app-rewired, , webpack-dev-server, nwb, jest and a few other tools. All of these tools are part of the development tool chain/CI/Jenkins and are not deployed to production code.
+The issue raised is "Affected versions of chownr are vulnerable to Time of Check Time of Use (TOCTOU). It does not dereference symbolic links and changes the owner of the link."
+There are no resolutions to this at present. As the issue does not affect any production code it is not deemed to be an issue.
+
+
+Insecure Randomness - MEDIUM SEVERITY - Vulnerable module: cryptiles
+
+This is introduced by unit testing tools (karma) that are used by nwb.
+Unit testing tools for generating random numbers will not make it in to production code and are therefore not a concern.
+
+
+Denial of Service (DoS) - MEDIUM SEVERITY - Vulnerable module: mem
+
+This is introduced by os-locale, which in turn is introduced by yargs, which is in turn used by multiple development tools (webpack, jest and more).
+Yargs is a tool for making Node command line interfaces (CLIs). These are all used for development/build chain purposes only.
+We do not plan to introduce CLIs in production code, therefore a DoS issue with a CLI tool is not a concern.
+
+---
+
 Prototype Pollution
 LOW SEVERITY
 Vulnerable module: deep-extend
