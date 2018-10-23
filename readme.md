@@ -88,6 +88,7 @@ or (especially if you are hitting 413 errors from snyk)
   - MD5 Hash - Artifact: {contents of packages.md5 }
   - MD5 Hash - Scan Report: {contents of snyk-complete.md5}
   - File Current Location: Box - NLEDS Third Party Software Drop
+  - Import target environment: SEC-ENV: dev
   - Import File Target Location: Artifactory - third-party-npms
   - Description: Please unpackage packages.tgz before importing using tar/gzip (available in Git Bash in the dev VMs)
   - Description: Also append information as to why the requested dependencies are required in the secure environment
