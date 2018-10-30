@@ -18,11 +18,13 @@ pkg.dependencies = minimalDependencies(
   pkg.dependencies,
   approved
 );
-pkg.devDependencies = minimalDependencies(
-  requestFolder,
-  pkg.devDependencies,
-  approved
-);
+if (pkg.devDependencies) {
+  pkg.devDependencies = minimalDependencies(
+    requestFolder,
+    pkg.devDependencies,
+    approved
+  );
+}
 
 console.log(pkg);
 createPackageForTest(null, pkg, requestFolder);
