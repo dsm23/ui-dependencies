@@ -39,6 +39,7 @@ Load the contents of a json file following the structure:
 
 - Clone this repository and run `npm install`.
 - Ensure that `snyk` and `snyk-to-html` are installed globally on your machine. `npm i -g snyk snyk-to-html`
+- Ensure you have authenticated with snyk by running `snyk auth`
 - Ensure you access to create folders on https://ibm.ent.box.com/folder/40373591140 by requesting access from the Platform Team in slack.
 
 ### 1. Adding new dependencies
