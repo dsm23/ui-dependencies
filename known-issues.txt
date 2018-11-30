@@ -1,15 +1,18 @@
-Last report from 8th November 2018:
+Last report from 30th November 2018:
+(Same as per 8th November, but adds underscore.string vulnerability)
 
 
 Low Severity
 Regular Expression Denial of Service (ReDoS)
 Vulnerable module: braces
+Previously identified.
 The braces module is not one we use directly but instead is only used via modules related to unit testing, so for us it's a vulnerability that can affect build-time only, and since we control our build environments doesn't really apply.
 
 
 Medium Severity
 Time of Check Time of Use (TOCTOU)
 Vulnerable module: chownr
+Previously identified.
 chownr is a deep sub dependency of react-scripts, react-app-rewired, , webpack-dev-server, nwb, jest and a few other tools. All of these tools are part of the development tool chain/CI/Jenkins and are not deployed to production code.
 The issue raised is "Affected versions of chownr are vulnerable to Time of Check Time of Use (TOCTOU). It does not dereference symbolic links and changes the owner of the link."
 There are no resolutions to this at present. As the issue does not affect any production code it is not deemed to be an issue.
@@ -18,24 +21,28 @@ There are no resolutions to this at present. As the issue does not affect any pr
 Low Severity
 Regular Expression Denial of Service (ReDoS)
 Vulnerable module: debug
+Previously identified.
 This vulnerability present for quite some time in our report and only affects build/test.
 
 
 Regular Expression Denial of Service (ReDoS)
 LOW SEVERITY
 Vulnerable module: eslint
+Previously identified.
 eslint is only used for linting/testing code during development. We do not intend to include it in a production build.
 
 
 Low Severity
 Prototype Pollution
 Vulnerable module: lodash
+Previously identified.
 Lodash is not used directly by our code but is used via many many routes for build/test tooling.
 
 
 Medium Severity
 Denial of Service (DoS)
 Vulnerable module: mem
+Previously identified.
 This is introduced by os-locale, which in turn is introduced by yargs, which is in turn used by multiple development tools (webpack, jest and more).
 Yargs is a tool for making Node command line interfaces (CLIs). These are all used for development/build chain purposes only.
 We do not plan to introduce CLIs in production code, therefore a DoS issue with a CLI tool is not a concern.
@@ -44,14 +51,23 @@ We do not plan to introduce CLIs in production code, therefore a DoS issue with 
 Low Severity
 Regular Expression Denial of Service (ReDoS)
 Vulnerable module: ms
-Vulnerability previously identified and only affects build-time unit testing.
+Previously identified.
+Only affects build-time unit testing.
 
 
 High Severity
 Command Injection
 Vulnerable module: shelljs
-Previously identified vulnerability.  Only applicable to build-time.
+Previously identified.
+Only applicable to build-time.
 
+
+High Severity
+Regular Expression Denial of Service (ReDoS)
+Vulnerable module: underscore.string
+This is a newly identified vulnerability, affecting an updated version of react-markdown that we are importing.
+Whilst Snyk describes this as a "high severity" vulnerability, the nature of this vulnerability is that there may be a slowdown if very long strings are processed and the reality is we currently make only minimal use of markdown.  Where we do use it we are in complete control of all text provided, and thus we can easily avoid any issues.  The risk to us is therefore minimal, and should not be a concern.
+We expect that this will be resolved in a later version of react-markdown.
 
 
 
