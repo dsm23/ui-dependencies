@@ -76,3 +76,5 @@ nleds.config.json
 /src/public/main.*.*
 
 previous.package-lock.json
+
+merged/package-lock.json
