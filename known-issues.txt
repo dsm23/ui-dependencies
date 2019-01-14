@@ -1,5 +1,5 @@
-Last report from 30th November 2018:
-(Same as per 8th November, but adds underscore.string vulnerability)
+Last report from 15th January 2019:
+(Same as per 30th November 2018, but removing underscore.string vulnerability)
 
 
 Low Severity
@@ -62,6 +62,12 @@ Previously identified.
 Only applicable to build-time.
 
 
+
+
+Legacy report info follows:
+---
+Added 30th November 2018:
+
 High Severity
 Regular Expression Denial of Service (ReDoS)
 Vulnerable module: underscore.string
@@ -70,9 +76,6 @@ Whilst Snyk describes this as a "high severity" vulnerability, the nature of thi
 We expect that this will be resolved in a later version of react-markdown.
 
 
-
-
-Legacy report info follows:
 
 ---
 Added 17 September 2018
